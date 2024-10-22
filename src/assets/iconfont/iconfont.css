@@ -1,0 +1,37 @@
+/* @font-face {
+  font-family: "iconfont";
+  src: url("iconfont.woff2?t=1671895108120") format("woff2"),
+    url("iconfont.woff?t=1671895108120") format("woff"),
+    url("iconfont.ttf?t=1671895108120") format("truetype");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+} */
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v32/KFOmCnqEu92Fr1Mu72xKKTU1Kvnz.woff2)
+    format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F,
+    U+FE2E-FE2F;
+}
+
+.pure-iconfont-tabs:before {
+  content: '\e63e';
+}
+
+.pure-iconfont-logo:before {
+  content: '\e620';
+}
+
+.pure-iconfont-new:before {
+  content: '\e615';
+}

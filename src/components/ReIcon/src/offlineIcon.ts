@@ -1,0 +1,62 @@
+import { addIcon } from '@iconify/vue/dist/offline';
+
+import Delete from '@iconify-icons/ep/delete';
+import EditPen from '@iconify-icons/ep/edit-pen';
+import Files from '@iconify-icons/ep/files';
+import HomeFilled from '@iconify-icons/ep/home-filled';
+import Lollipop from '@iconify-icons/ep/lollipop';
+import Monitor from '@iconify-icons/ep/monitor';
+import OperationLog from '@iconify-icons/icon-park-outline/log';
+import icon_circle_fill from '@iconify-icons/ri/add-circle-fill';
+import AddFill from '@iconify-icons/ri/add-circle-line';
+import addIcons from '@iconify-icons/ri/add-fill';
+import cancelIcon from '@iconify-icons/ri/close-circle-fill';
+import deleteBin_5Line from '@iconify-icons/ri/delete-bin-5-line';
+import FolderFill from '@iconify-icons/ri/folder-2-fill';
+import History from '@iconify-icons/ri/history-line';
+import InformationLine from '@iconify-icons/ri/information-line';
+import listUnordered from '@iconify-icons/ri/list-unordered';
+import LockFill from '@iconify-icons/ri/lock-fill';
+import LockUnlockFill from '@iconify-icons/ri/lock-unlock-line';
+import icon_money from '@iconify-icons/ri/money-cny-box-fill';
+import MoneyDollarCircleFill from '@iconify-icons/ri/money-cny-circle-line';
+import saveIcon from '@iconify-icons/ri/save-3-fill';
+import StoreFill from '@iconify-icons/ri/store-2-fill';
+import uploadIcon from '@iconify-icons/ri/upload-2-fill';
+import Crown from '@iconify-icons/ri/vip-crown-2-line';
+
+import role from '@iconify-icons/ep/monitor';
+import systemConfig from '@iconify-icons/ri/list-unordered';
+import roleManager from '@iconify-icons/ri/money-cny-circle-line';
+import whiteManager from '@iconify-icons/ri/settings-3-line';
+
+addIcon('tenantManager', role);
+
+addIcon('virtual', roleManager);
+addIcon('history', History);
+addIcon('operationLog', OperationLog);
+addIcon('systemConfig', systemConfig);
+
+addIcon('configCenter', whiteManager);
+addIcon('homeFilled', HomeFilled);
+addIcon('informationLine', InformationLine);
+addIcon('lollipop', Lollipop);
+addIcon('crown', Crown);
+addIcon('storeFill', StoreFill);
+addIcon('folderFill', FolderFill);
+addIcon('monitor', Monitor);
+addIcon('files', Files);
+addIcon('unlock', LockUnlockFill);
+addIcon('lock', LockFill);
+addIcon('icon_circle_fill', icon_circle_fill);
+addIcon('icon_money', icon_money);
+addIcon('uploadIcon', uploadIcon);
+addIcon('cancelIcon', cancelIcon);
+addIcon('saveIcon', saveIcon);
+addIcon('moneyDollarCircleFill', MoneyDollarCircleFill);
+addIcon('listUnordered', listUnordered);
+addIcon('addIcon', addIcons);
+addIcon('addFill', AddFill);
+addIcon('editPen', EditPen);
+addIcon('deleteBin_5Line', deleteBin_5Line);
+addIcon('Delete', Delete);
