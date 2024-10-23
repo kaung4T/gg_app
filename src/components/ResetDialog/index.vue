@@ -6,12 +6,9 @@
       :rules="resetPasswordRules"
       size="large"
       @validate="validate"
+      label-width="auto"
     >
-      <el-form-item
-        prop="oldPassword"
-        :label="`${t('Old Password')}:`"
-        label-width="100"
-      >
+      <el-form-item prop="oldPassword" :label="`${t('Old Password')}:`">
         <el-input
           clearable
           show-password
@@ -20,24 +17,17 @@
         />
       </el-form-item>
 
-      <el-form-item
-        prop="newPassword"
-        :label="`${t('New Password')}:`"
-        label-width="100"
-      >
+      <el-form-item prop="newPassword" :label="`${t('New Password')}:`">
         <el-input
           clearable
           show-password
           v-model="resetForm.newPassword"
           :placeholder="t('New Password')"
+          class="w-[200px!]"
         />
       </el-form-item>
 
-      <el-form-item
-        prop="confirmPassword"
-        :label="`${t('Confirm Password')}:`"
-        label-width="100"
-      >
+      <el-form-item prop="confirmPassword" :label="`${t('Confirm Password')}:`">
         <el-input
           clearable
           show-password
@@ -63,6 +53,7 @@ import { IResetForm } from '@/views/login/utils/type';
 import { FormInstance } from 'element-plus/es/components/form';
 import { reactive, ref } from 'vue';
 import { REGEXP_PWD } from './rules';
+import { message } from '@/utils/message';
 
 const resetFormRef = ref<FormInstance>();
 const isDisabled = ref(true);
@@ -90,7 +81,7 @@ const resetPasswordRules = reactive({
   oldPassword: [
     {
       validator: (_, value, callback) => {
-        if (value === 'The old password cannot be empty') {
+        if (!value) {
           callback(new Error(t('The old password cannot be empty')));
         } else {
           callback();
@@ -126,9 +117,7 @@ const resetPasswordRules = reactive({
           callback(new Error(t('Confirm password cannot be empty')));
         } else if (resetForm.newPassword !== value) {
           callback(
-            new Error(
-              t('The passwords entered twice are inconsistent, please re-enter')
-            )
+            new Error(t('The passwords are inconsistent, please re-enter'))
           );
         } else {
           callback();
@@ -140,21 +129,22 @@ const resetPasswordRules = reactive({
 });
 
 const resetPassword = async () => {
-  // const res = await API.updatePwd({
-  //   id: userStore.userInfo.id,
-  //   pwd: getMD5(resetForm.oldPassword),
-  //   newPwd: getMD5(resetForm.newPassword)
-  // });
-  // if (res.code) return message(res.msg, { type: 'error' });
-  // else
-  //   message(t('Modification successful, please log in again'), {
-  //     type: 'success',
-  //     duration: 1000,
-  //     onClose: () => {
-  //       closeDialog();
-  //       userStore.logOut();
-  //     }
-  //   });
+  const res = await API.updatePassword({
+    id: userStore.userInfo.id,
+    user_id: userStore.userInfo.user_id,
+    current_password: resetForm.oldPassword,
+    new_password: resetForm.newPassword
+  });
+  if (!res.status) return message(res.message, { type: 'error' });
+  else
+    message(t('Modification successful, please log in again'), {
+      type: 'success',
+      duration: 1000,
+      onClose: () => {
+        closeDialog();
+        useUserStore().logOut();
+      }
+    });
 };
 
 const closeDialog = () => {

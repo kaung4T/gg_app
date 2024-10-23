@@ -30,12 +30,13 @@ const modulesRoutes = import.meta.glob('/src/views/**/*.{vue,tsx}');
 // 动态路由
 import { permissionData } from './permissionRouter';
 import { useUserStore } from '@/store/user';
+import { static_routers } from './static_router';
 
 function handRank(routeInfo: any) {
   const { name, path, parentId, meta } = routeInfo;
   return isAllEmpty(parentId)
     ? isAllEmpty(meta?.rank) ||
-      (meta?.rank === 0 && name !== 'Home' && path !== '/')
+      (meta?.rank === 0 && name !== 'Game1' && path !== '/')
       ? true
       : false
     : false;
@@ -169,6 +170,7 @@ const translateLan = list => {
 function handleAsyncRoutes(routeList) {
   translateLan(routeList);
   if (routeList.length === 0) {
+    console.log('handleWholeMenu 1');
     usePermissionStoreHook().handleWholeMenus(routeList);
   } else {
     formatFlatteningRoutes(addAsyncRoutes(routeList)).map(
@@ -190,6 +192,7 @@ function handleAsyncRoutes(routeList) {
         }
       }
     );
+    console.log('handleWholeMenu 2');
     usePermissionStoreHook().handleWholeMenus(routeList);
   }
   addPathMatch();
@@ -236,7 +239,7 @@ function initRouter() {
       });
     } else {
       return new Promise((resolve, reject) => {
-        const userStore = useUserStore();
+        // const userStore = useUserStore();
         // API.getRouter({
         //   id: userStore.userInfo.id
         // }).then(({ data }: { data: UserAPI.RouterResData[] }) => {
@@ -246,9 +249,10 @@ function initRouter() {
         //     data = data.map(transformItem) as any;
         //     handleAsyncRoutes(cloneDeep(data));
         //     storageSession().setItem(key, data);
-        //     resolve(router);
         //   }
         // });
+        handleAsyncRoutes(static_routers);
+        resolve(router);
       });
     }
   } else {
@@ -425,9 +429,9 @@ function hasAuth(value: string | Array<string>): boolean {
 
 /** 获取所有菜单中的第一个菜单（顶级菜单）*/
 function getTopMenu(tag = false): menuType {
-  const topMenu = usePermissionStoreHook().wholeMenus[0]?.children
-    ? usePermissionStoreHook().wholeMenus[0]?.children[0]
-    : usePermissionStoreHook().wholeMenus[0];
+  console.log('whole', usePermissionStoreHook().wholeMenus);
+  const topMenu = usePermissionStoreHook().wholeMenus[0]?.children[0];
+  console.log('pushing3', topMenu);
   tag && useMultiTagsStoreHook().handleTags('push', topMenu);
   return topMenu;
 }

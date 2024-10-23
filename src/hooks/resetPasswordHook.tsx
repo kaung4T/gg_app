@@ -8,7 +8,7 @@ export const useResetPasswordHook = () => {
 
   const openResetDialog = () => {
     addDialog({
-      title: t('重置密码'),
+      title: t('Reset Password'),
       class: 'reset_dialog',
       width: '25%',
       center: true,

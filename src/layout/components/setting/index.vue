@@ -231,7 +231,7 @@ onBeforeMount(() => {
 
 <template>
   <panel>
-    <el-divider>{{ t('主题') }}</el-divider>
+    <el-divider>{{ t('Theme') }}</el-divider>
     <el-switch
       v-model="dataTheme"
       inline-prompt
@@ -241,7 +241,7 @@ onBeforeMount(() => {
       @change="dataThemeChange"
     />
 
-    <el-divider>导航栏模式</el-divider>
+    <el-divider>Navigation</el-divider>
     <ul class="pure-theme">
       <el-tooltip
         :effect="tooltipEffect"
@@ -297,7 +297,7 @@ onBeforeMount(() => {
       </el-tooltip> -->
     </ul>
 
-    <el-divider>{{ t('主题色') }}</el-divider>
+    <el-divider>{{ t('Theme Color') }}</el-divider>
     <ul class="theme-color">
       <li
         v-for="(item, index) in themeColors"
@@ -316,10 +316,10 @@ onBeforeMount(() => {
       </li>
     </ul>
 
-    <el-divider>{{ t('界面显示') }}</el-divider>
+    <el-divider>{{ t('Display') }}</el-divider>
     <ul class="setting">
       <li>
-        <span class="dark:text-white">{{ t('灰色模式') }}</span>
+        <span class="dark:text-white">{{ t('Gray Mode') }}</span>
         <el-switch
           v-model="settings.greyVal"
           inline-prompt
@@ -330,7 +330,7 @@ onBeforeMount(() => {
         />
       </li>
       <li>
-        <span class="dark:text-white">色弱模式</span>
+        <span class="dark:text-white">{{ t('Colorblind Mode') }}</span>
         <el-switch
           v-model="settings.weakVal"
           inline-prompt
@@ -341,7 +341,7 @@ onBeforeMount(() => {
         />
       </li>
       <li>
-        <span class="dark:text-white">隐藏标签页</span>
+        <span class="dark:text-white">{{ t('Hide Tab') }}</span>
         <el-switch
           v-model="settings.tabsVal"
           inline-prompt
@@ -352,7 +352,7 @@ onBeforeMount(() => {
         />
       </li>
       <li>
-        <span class="dark:text-white">侧边栏Logo</span>
+        <span class="dark:text-white">{{ t('Sidebar Logo') }}</span>
         <el-switch
           v-model="logoVal"
           inline-prompt
@@ -365,7 +365,7 @@ onBeforeMount(() => {
         />
       </li>
       <li>
-        <span class="dark:text-white">标签页持久化</span>
+        <span class="dark:text-white">{{ t('Tab persistence') }}</span>
         <el-switch
           v-model="settings.multiTagsCache"
           inline-prompt
@@ -377,10 +377,10 @@ onBeforeMount(() => {
       </li>
 
       <li>
-        <span class="dark:text-white">标签风格</span>
+        <span class="dark:text-white">{{ t('Label Style') }}</span>
         <el-radio-group v-model="markValue" size="small" @change="onChange">
-          <el-radio label="card">卡片</el-radio>
-          <el-radio label="smart">灵动</el-radio>
+          <el-radio label="card">{{ t('Card') }}</el-radio>
+          <el-radio label="smart">{{ t('Smart') }}</el-radio>
         </el-radio-group>
       </li>
     </ul>
@@ -397,7 +397,7 @@ onBeforeMount(() => {
         height="15"
         style="margin-right: 4px"
       />
-      {{ t('清空缓存并返回登录页') }}
+      {{ t('Clear cache and log out') }}
     </el-button>
   </panel>
 </template>

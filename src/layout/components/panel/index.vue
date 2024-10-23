@@ -3,6 +3,7 @@ import { emitter } from '@/utils/mitt';
 import { onClickOutside } from '@vueuse/core';
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import Close from '@iconify-icons/ep/close';
+import { t } from '@/plugins/i18n';
 
 const target = ref(null);
 const show = ref<Boolean>(false);
@@ -45,7 +46,7 @@ onBeforeUnmount(() => {
     <div ref="target" class="right-panel bg-bg_color">
       <div class="right-panel-items">
         <div class="project-configuration">
-          <h4 class="dark:text-white">项目配置</h4>
+          <h4 class="dark:text-white">{{ t('Configuration') }}</h4>
           <span title="关闭配置" :class="iconClass">
             <IconifyIconOffline
               class="dark:text-white"

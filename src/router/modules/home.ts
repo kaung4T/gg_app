@@ -1,30 +1,22 @@
-import { HOME } from '../const_rank';
+import { GAME1 } from '../const_rank';
+
 const { VITE_HIDE_HOME } = import.meta.env;
 const Layout = () => import('@/layout/index.vue');
 
 export default {
   path: '/',
-  name: 'Home',
+  name: 'Game1',
   component: Layout,
   redirect: '/game1',
   meta: {
     icon: 'homeFilled',
-    title: 'Home',
-    rank: HOME
+    title: 'Game1',
+    rank: GAME1
   },
   children: [
     {
-      path: '/welcome',
-      name: 'Welcome',
-      component: () => import('@/views/welcome/index.vue'),
-      meta: {
-        title: 'Welcome',
-        showLink: VITE_HIDE_HOME === 'true' ? false : true
-      }
-    },
-    {
       path: '/game1',
-      name: 'Welcome',
+      name: 'Game1',
       component: () => import('@/views/game1/index.vue'),
       meta: {
         title: 'Game1',

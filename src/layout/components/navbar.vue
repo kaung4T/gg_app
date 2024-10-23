@@ -21,14 +21,14 @@
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="openResetDialog">
               <IconifyIconOffline icon="configCenter" style="margin: 5px" />
-              {{ t('重置密码') }}
+              {{ t('Reset Password') }}
             </el-dropdown-item>
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
                 :icon="LogoutCircleRLine"
                 style="margin: 5px"
               />
-              {{ t('退出系统') }}
+              {{ t('Log out') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -37,7 +37,7 @@
       <span
         class="set-icon navbar-bg-hover"
         @click="onPanel"
-        :title="t('打开项目配置')"
+        :title="t('Configuration')"
       >
         <IconifyIconOffline :icon="Setting" />
       </span>

@@ -33,6 +33,7 @@
                 maxlength="30"
                 :placeholder="t('User Id')"
                 :prefix-icon="useRenderIcon(User)"
+                @keyup.enter="onLogin(ruleFormRef)"
               />
             </el-form-item>
 
@@ -43,6 +44,7 @@
                 v-model.trim="ruleForm.password"
                 :placeholder="t('Password')"
                 :prefix-icon="useRenderIcon(Lock)"
+                @keyup.enter="onLogin(ruleFormRef)"
               />
             </el-form-item>
 
@@ -115,6 +117,7 @@ const onLogin = async (formEl: FormInstance | undefined) => {
 };
 
 const _loginRequest = async () => {
+  console.log('handleWholeMenu 3')
   usePermissionStoreHook().handleWholeMenus([]);
   addPathMatch();
   try {
@@ -133,15 +136,14 @@ const _loginRequest = async () => {
     //   ruleForm.password = '';
     //   return openResetDialog();
     // }
-    router.push('game1');
-    // initRouter()
-    //   .then(() => {
-    //     message(t('Login successful'), { type: 'success' });
-    //     router.push(getTopMenu(true).path);
-    //   })
-    //   .catch(err => {
-    //     message(err, { type: 'error' });
-    //   });
+    // router.push('game1');
+    initRouter()
+      .then(() => {
+        router.push(getTopMenu(true).path);
+      })
+      .catch(err => {
+        message(err, { type: 'error' });
+      });
   } catch (error) {
     message(error.message, { type: 'error' });
     loading.value = false;

@@ -111,6 +111,10 @@ export const useMultiTagsStore = defineStore({
           return this.multiTags.slice(-1);
       }
     }
+  },
+  persist: {
+    enabled: true,
+    strategies: [{ storage: localStorage }]
   }
 });
 

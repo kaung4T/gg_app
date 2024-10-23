@@ -139,7 +139,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
       next({ path: '/error/403' });
     }
     // 开启隐藏首页后在浏览器地址栏手动输入首页welcome路由则跳转到404页面
-    if (VITE_HIDE_HOME === 'true' && to.fullPath === '/welcome') {
+    if (VITE_HIDE_HOME === 'true' && to.fullPath === '/game1') {
       next({ path: '/error/404' });
     }
     if (_from?.name) {
@@ -172,6 +172,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
                 const { path, name, meta } = route.children
                   ? route.children[0]
                   : route;
+                console.log('pushing1');
                 useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,
@@ -179,6 +180,7 @@ router.beforeEach((to: ToRouteType, _from, next) => {
                 });
               } else {
                 const { path, name, meta } = route;
+                console.log('pushing2');
                 useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,

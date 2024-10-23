@@ -5,6 +5,31 @@
       <span>{{ title }}</span>
     </div>
     <el-menu
+      default-active="2"
+      mode="horizontal"
+      ref="menuRef"
+      class="horizontal-header-menu"
+    >
+      <el-menu-item index="2" class="hover:bg-transparent!">
+        <el-icon><icon-menu /></el-icon>
+        <span class="text-lg">
+          <router-link to="/game1">Game 1</router-link>
+        </span>
+      </el-menu-item>
+      <el-sub-menu index="1">
+        <template #title>
+          <el-icon><MenuSetting/></el-icon>
+          <span class="text-lg">Setting</span>
+        </template>
+        <el-menu-item index="1-1">
+          <router-link to="/members" class="text-lg">Members</router-link>
+        </el-menu-item>
+        <el-menu-item index="1-2">
+          <router-link to="/ipManager" class="text-lg">IP Manager</router-link>
+        </el-menu-item>
+      </el-sub-menu>
+    </el-menu>
+    <!-- <el-menu
       router
       ref="menuRef"
       mode="horizontal"
@@ -17,15 +42,8 @@
         :item="route"
         :base-path="route.path"
       />
-    </el-menu>
+    </el-menu> -->
     <div class="horizontal-header-right">
-      <!-- 菜单搜索 -->
-      <!-- <Search /> -->
-      <!-- 通知 -->
-      <!-- <Notice id="header-notice" /> -->
-      <!-- 国际化 -->
-
-      <!-- 退出登录 -->
       <el-dropdown trigger="click">
         <span class="el-dropdown-link navbar-bg-hover">
           <img :src="userAvatar" />
@@ -37,14 +55,14 @@
           <el-dropdown-menu class="logout">
             <el-dropdown-item @click="openResetDialog">
               <IconifyIconOffline icon="configCenter" style="margin: 5px" />
-              {{ t('重置密码') }}
+              {{ t('Reset Password') }}
             </el-dropdown-item>
             <el-dropdown-item @click="logout">
               <IconifyIconOffline
                 :icon="LogoutCircleRLine"
                 style="margin: 5px"
               />
-              {{ t('退出系统') }}
+              {{ t('Log out') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -54,7 +72,7 @@
       <span
         class="set-icon navbar-bg-hover"
         @click="onPanel"
-        :title="t('打开项目配置')"
+        :title="t('Configuration')"
       >
         <IconifyIconOffline :icon="Setting" />
       </span>
@@ -70,11 +88,15 @@ import { useNav } from '@/layout/hooks/useNav';
 import { useTranslationLang } from '../../hooks/useTranslationLang';
 import { usePermissionStoreHook } from '@/store/permission';
 import LogoutCircleRLine from '@iconify-icons/ri/logout-circle-r-line';
-import Setting from '@iconify-icons/ri/settings-3-line';
 import LanguageNav from '@/components/LanguageNav/index.vue';
 import { t } from '@/plugins/i18n';
 import { useResetPasswordHook } from '@/hooks/resetPasswordHook';
 import { useUserStore } from '@/store/user';
+import { Document, Menu as IconMenu, Location } from '@element-plus/icons-vue';
+import Setting from '@iconify-icons/ri/settings-3-line';
+import {
+  Setting as MenuSetting
+} from '@element-plus/icons-vue';
 
 const menuRef = ref();
 

@@ -141,6 +141,11 @@ function dynamicRouteTag(value: string): void {
     if (!hasValue) {
       arr.forEach((arrItem: any) => {
         if (arrItem.path === value || arrItem.path === value) {
+          console.log('pushing4', {
+            path: value,
+            meta: arrItem.meta,
+            name: arrItem.name
+          });
           useMultiTagsStoreHook().handleTags('push', {
             path: value,
             meta: arrItem.meta,

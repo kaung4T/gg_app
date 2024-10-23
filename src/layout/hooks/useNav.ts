@@ -76,10 +76,16 @@ export function useNav() {
 
   /** log out and log in */
   function logout() {
-    ElMessageBox.confirm(`${t('您确定要退出么?')} `, '系统提示', {
-      type: 'warning',
-      center: true
-    }).then(() => {
+    ElMessageBox.confirm(
+      `${t('Are you sure you want to exit?')} `,
+      'Confirmation',
+      {
+        type: 'warning',
+        center: true,
+        confirmButtonText: t('Confirm'),
+        cancelButtonText: t('Cancel'),
+      }
+    ).then(() => {
       useUserStore().logOut();
     });
   }

@@ -52,6 +52,10 @@ export const usePermissionStore = defineStore({
       this.wholeMenus = [];
       this.cachePageList = [];
     }
+  },
+  persist: {
+    enabled: true,
+    strategies: [{ storage: localStorage }]
   }
 });
 

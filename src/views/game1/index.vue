@@ -72,6 +72,7 @@
       >
         <template v-slot="{ size, dynamicColumns }">
           <pure-table
+            :style="{ height: 'calc(100vh - 500px)' }"
             align-whole="center"
             table-layout="auto"
             :loading="loading"
@@ -97,6 +98,7 @@ import { columns } from './component/TableColumnList';
 import { Game1Hook } from './utils/hook';
 import { usePublicHooks } from '@/hooks';
 import { PureTableBar } from '@/components/RePureTableBar';
+import { helper } from 'echarts';
 
 defineOptions({ name: 'Game1' });
 const { tableHeaderStyle } = usePublicHooks();

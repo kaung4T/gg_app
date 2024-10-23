@@ -1,22 +1,29 @@
-import { t } from '@/plugins/i18n';
-import { GAME1 } from '../const_rank';
-
-export default {
-  path: '/game1',
-  meta: {
-    title: t('账户中心'),
-    icon: 'home_8Fill',
-    rank: GAME1
+export const static_routers = [
+  {
+    path: '/game1',
+    name: 'Game1',
+    meta: {
+      title: 'Game1',
+      showLink: true
+    },
+    id: 0,
+    parentId: 0,
+    pathList: [0, 0]
   },
-  children: [
-    {
-      path: '/game1',
-      name: 'Game 1',
-      component: () => import('@/views/game1/index.vue'),
-      meta: {
-        title: t('商户信息管理'),
-        showParent: true
-      }
-    }
-  ]
-} as RouteConfigsTable;
+  {
+    path: '/members',
+    meta: {
+      title: 'Members',
+      showLink: true
+    },
+    name: 'Members'
+  },
+  {
+    path: '/ipManager',
+    meta: {
+      title: 'IP Manager',
+      showLink: true
+    },
+    name: 'IP Manager'
+  }
+];

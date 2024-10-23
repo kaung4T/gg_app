@@ -20,7 +20,7 @@
           <el-menu-item index="1-1">
             <router-link to="/members" class="text-lg">Members</router-link>
           </el-menu-item>
-          <el-menu-item index="1-3">
+          <el-menu-item index="1-2">
             <router-link to="/ipManager" class="text-lg"
               >IP Manager</router-link
             >
