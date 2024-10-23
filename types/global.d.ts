@@ -3,18 +3,12 @@ import type {
   FunctionalComponent,
   PropType as VuePropType,
   ComponentPublicInstance
-} from "vue";
-import type { ECharts } from "echarts";
-import type { IconifyIcon } from "@iconify/vue";
-import type { TableColumns } from "@pureadmin/table";
+} from 'vue';
+import type { ECharts } from 'echarts';
+import type { IconifyIcon } from '@iconify/vue';
+import type { TableColumns } from '@pureadmin/table';
 
-/**
- * 全局类型声明，无需引入直接在 `.vue` 、`.ts` 、`.tsx` 文件使用即可获得类型提示
- */
 declare global {
-  /**
-   * 平台的名称、版本、依赖、最后构建时间的类型提示
-   */
   const __APP_INFO__: {
     pkg: {
       name: string;
@@ -25,9 +19,6 @@ declare global {
     lastBuildTime: string;
   };
 
-  /**
-   * Window 的类型提示
-   */
   interface Window {
     // Global vue app instance
     __APP__: App<Element>;
@@ -41,22 +32,15 @@ declare global {
     msRequestAnimationFrame: (callback: FrameRequestCallback) => number;
   }
 
-  /**
-   * 打包压缩格式的类型声明
-   */
   type ViteCompression =
-    | "none"
-    | "gzip"
-    | "brotli"
-    | "both"
-    | "gzip-clear"
-    | "brotli-clear"
-    | "both-clear";
+    | 'none'
+    | 'gzip'
+    | 'brotli'
+    | 'both'
+    | 'gzip-clear'
+    | 'brotli-clear'
+    | 'both-clear';
 
-  /**
-   * 全局自定义环境变量的类型声明
-   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#%E5%85%B7%E4%BD%93%E9%85%8D%E7%BD%AE}
-   */
   interface ViteEnv {
     VITE_PORT: number;
     VITE_PUBLIC_PATH: string;
@@ -68,15 +52,8 @@ declare global {
     VITE_BUILD_TYPE: string;
   }
 
-  /**
-   *  继承 `@pureadmin/table` 的 `TableColumns` ，方便全局直接调用
-   */
-  interface TableColumnList extends Array<TableColumns> { }
+  interface TableColumnList extends Array<TableColumns> {}
 
-  /**
-   * 对应 `public/serverConfig.json` 文件的类型声明
-   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#serverconfig-json}
-   */
   interface ServerConfigs {
     Version?: string;
     Title?: string;
@@ -102,10 +79,6 @@ declare global {
     ResponsiveStorageNameSpace?: string;
   }
 
-  /**
-   * 与 `ServerConfigs` 类型不同，这里是缓存到浏览器本地存储的类型声明
-   * @see {@link https://yiming_chang.gitee.io/pure-admin-doc/pages/config/#serverconfig-json}
-   */
   interface StorageConfigs {
     version?: string;
     title?: string;
@@ -127,9 +100,6 @@ declare global {
     username?: string;
   }
 
-  /**
-   * `responsive-storage` 本地响应式 `storage` 的类型声明
-   */
   interface ResponsiveStorage {
     locale: {
       locale?: string;
@@ -152,9 +122,6 @@ declare global {
     tags?: Array<any>;
   }
 
-  /**
-   * 平台里所有组件实例都能访问到的全局属性对象的类型声明
-   */
   interface GlobalPropertiesApi {
     $echarts: ECharts;
     $storage: ResponsiveStorage;

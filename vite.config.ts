@@ -44,7 +44,6 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
       proxy: {
         '/api': {
           target: VITE_API_BASE_URL,
-          // rewrite: path => path.replace(/^\/api/, ''),
           changeOrigin: true,
           configure: (proxy, _) => {
             proxy.on('proxyRes', (_, req, _r) => {

@@ -1,10 +1,8 @@
-// 此文件跟同级目录的 global.d.ts 文件一样也是全局类型声明，只不过这里存放一些零散的全局类型，无需引入直接在 .vue 、.ts 、.tsx 文件使用即可获得类型提示
-
 type RefType<T> = T | null;
 
 type EmitType = (event: string, ...args: any[]) => void;
 
-type TargetContext = "_self" | "_blank";
+type TargetContext = '_self' | '_blank';
 
 type ComponentRef<T extends HTMLElement = HTMLDivElement> =
   ComponentElRef<T> | null;
@@ -49,7 +47,7 @@ type TimeoutHandle = ReturnType<typeof setTimeout>;
 
 type IntervalHandle = ReturnType<typeof setInterval>;
 
-type Effect = "light" | "dark";
+type Effect = 'light' | 'dark';
 
 interface ChangeEvent extends Event {
   target: HTMLInputElement;
