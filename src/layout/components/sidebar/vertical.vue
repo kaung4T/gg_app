@@ -5,8 +5,8 @@
       wrap-class="scrollbar-wrapper"
       :class="[device === 'mobile' ? 'mobile' : 'pc']"
     >
-      <el-menu default-active="2" class="el-menu-vertical-demo">
-        <el-menu-item index="2">
+      <el-menu :default-active="defaultActive" class="el-menu-vertical-demo">
+        <el-menu-item index="/game1">
           <el-icon><icon-menu /></el-icon>
           <span class="text-lg">
             <router-link to="/game1">Game 1</router-link>
@@ -17,10 +17,10 @@
             <el-icon><setting /></el-icon>
             <span class="text-lg">Setting</span>
           </template>
-          <el-menu-item index="1-1">
+          <el-menu-item index="/members">
             <router-link to="/members" class="text-lg">Members</router-link>
           </el-menu-item>
-          <el-menu-item index="1-2">
+          <el-menu-item index="/ipManager">
             <router-link to="/ipManager" class="text-lg"
               >IP Manager</router-link
             >

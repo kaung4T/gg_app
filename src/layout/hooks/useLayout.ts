@@ -1,8 +1,8 @@
-import { computed } from "vue";
-import { useI18n } from "vue-i18n";
-import { routerArrays } from "../types";
-import { useGlobal } from "@pureadmin/utils";
-import { useMultiTagsStore } from "@/store/multiTags";
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { routerArrays } from '../types';
+import { useGlobal } from '@pureadmin/utils';
+import { useMultiTagsStore } from '@/store/multiTags';
 
 export function useLayout() {
   const { $storage, $config } = useGlobal<GlobalPropertiesApi>();
@@ -17,17 +17,17 @@ export function useLayout() {
     }
     /** 国际化 */
     if (!$storage.locale) {
-      $storage.locale = { locale: $config?.Locale ?? "zh" };
-      useI18n().locale.value = $config?.Locale ?? "zh";
+      $storage.locale = { locale: $config?.Locale ?? 'ko' };
+      useI18n().locale.value = $config?.Locale ?? 'ko';
     }
     /** 导航 */
     if (!$storage.layout) {
       $storage.layout = {
-        layout: $config?.Layout ?? "vertical",
-        theme: $config?.Theme ?? "default",
+        layout: $config?.Layout ?? 'vertical',
+        theme: $config?.Theme ?? 'default',
         darkMode: $config?.DarkMode ?? false,
         sidebarStatus: $config?.SidebarStatus ?? true,
-        epThemeColor: $config?.EpThemeColor ?? "#409EFF"
+        epThemeColor: $config?.EpThemeColor ?? '#409EFF'
       };
     }
     /** 灰色模式、色弱模式、隐藏标签页 */
@@ -37,7 +37,7 @@ export function useLayout() {
         weak: $config?.Weak ?? false,
         hideTabs: $config?.HideTabs ?? false,
         showLogo: $config?.ShowLogo ?? true,
-        showModel: $config?.ShowModel ?? "smart",
+        showModel: $config?.ShowModel ?? 'smart',
         multiTagsCache: $config?.MultiTagsCache ?? false
       };
     }

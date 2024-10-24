@@ -141,11 +141,6 @@ function dynamicRouteTag(value: string): void {
     if (!hasValue) {
       arr.forEach((arrItem: any) => {
         if (arrItem.path === value || arrItem.path === value) {
-          console.log('pushing4', {
-            path: value,
-            meta: arrItem.meta,
-            name: arrItem.name
-          });
           useMultiTagsStoreHook().handleTags('push', {
             path: value,
             meta: arrItem.meta,
@@ -298,10 +293,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (isFullscreen.value) {
           tagsViews[6].icon = ExitFullscreen;
-          tagsViews[6].text = t('内容区域全屏');
+          tagsViews[6].text = t('Full screen');
         } else {
           tagsViews[6].icon = Fullscreen;
-          tagsViews[6].text = t('全屏');
+          tagsViews[6].text = t('Full screen');
         }
       }, 100);
       break;
@@ -311,10 +306,10 @@ function onClickDrop(key, item, selectRoute?: RouteConfigs) {
       setTimeout(() => {
         if (pureSetting.hiddenSideBar) {
           tagsViews[7].icon = ExitFullscreen;
-          tagsViews[7].text = t('内容区退出全屏');
+          tagsViews[7].text = t('Exit FullScreen');
         } else {
           tagsViews[7].icon = Fullscreen;
-          tagsViews[7].text = t('内容区域全屏');
+          tagsViews[7].text = t('Full Screen');
         }
       }, 100);
       break;
@@ -472,7 +467,7 @@ watch(route, () => {
 
 watch(isFullscreen, () => {
   tagsViews[6].icon = Fullscreen;
-  tagsViews[6].text = t('全屏');
+  tagsViews[6].text = t('FullScreen');
 });
 
 onMounted(() => {

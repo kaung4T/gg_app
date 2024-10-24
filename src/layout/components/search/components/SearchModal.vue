@@ -70,7 +70,7 @@ function search() {
       ? t(menu.meta?.title)
           .toLocaleLowerCase()
           .includes(keyword.value.toLocaleLowerCase().trim()) ||
-        (locale.value === 'zh' &&
+        (locale.value === 'ko' &&
           !isAllEmpty(
             match(
               t(menu.meta?.title).toLocaleLowerCase(),

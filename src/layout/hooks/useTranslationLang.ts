@@ -23,7 +23,7 @@ export function useTranslationLang(ref?: Ref) {
   );
 
   onBeforeMount(() => {
-    locale.value = $storage.locale?.locale ?? 'zh';
+    locale.value = $storage.locale?.locale ?? 'ko';
   });
 
   return {

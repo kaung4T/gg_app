@@ -16,7 +16,7 @@ export const handleTableWidth = (
 
 export const getColumnWidth = (strs: string) => {
   const { $storage } = useNav();
-  if ($storage.locale.locale === 'zh') {
+  if ($storage.locale.locale === 'ko') {
     return strs.length * 30;
   } else {
     return strs.length * 15;

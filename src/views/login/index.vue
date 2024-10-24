@@ -117,7 +117,6 @@ const onLogin = async (formEl: FormInstance | undefined) => {
 };
 
 const _loginRequest = async () => {
-  console.log('handleWholeMenu 3')
   usePermissionStoreHook().handleWholeMenus([]);
   addPathMatch();
   try {

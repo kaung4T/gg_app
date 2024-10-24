@@ -1,8 +1,8 @@
 <template>
   <div class="w-full bg-red-50">
     <el-tabs tab-position="top" class="custom_input" type="border-card">
-      <el-tab-pane label="中文">
-        <el-input :placeholder="placehoder" v-model="formData.zh" />
+      <el-tab-pane label="Korean">
+        <el-input :placeholder="placehoder" v-model="formData.ko" />
       </el-tab-pane>
       <el-tab-pane label="English">
         <el-input :placeholder="placehoder" v-model="formData.en" />
@@ -19,7 +19,7 @@ const props = withDefaults(
   defineProps<{
     placehoder: string;
     txtData: {
-      zh: string;
+      ko: string;
       en: string;
     };
   }>(),

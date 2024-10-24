@@ -17,7 +17,7 @@ interface ILocaleType {
 }
 const props = withDefaults(
   defineProps<{
-    cnVal: string;
+    koVal: string;
     enVal: string;
     maxlength?: string;
     className?: string;
@@ -32,16 +32,16 @@ const props = withDefaults(
   }
 );
 
-const emits = defineEmits(['update:cnVal', 'update:enVal', 'searchClick']);
+const emits = defineEmits(['update:koVal', 'update:enVal', 'searchClick']);
 const lan =
-  (storageLocal().getItem('responsive-locale') as ILocaleType)?.locale ?? 'zh';
+  (storageLocal().getItem('responsive-locale') as ILocaleType)?.locale ?? 'ko';
 const renderStr = computed({
   get() {
-    return (props.compnentLan ?? lan) === 'zh' ? props.cnVal : props.enVal;
+    return (props.compnentLan ?? lan) === 'ko' ? props.koVal : props.enVal;
   },
   set(val) {
-    if ((props.compnentLan ?? lan) === 'zh') {
-      emits('update:cnVal', val);
+    if ((props.compnentLan ?? lan) === 'ko') {
+      emits('update:koVal', val);
     } else {
       emits('update:enVal', val);
     }

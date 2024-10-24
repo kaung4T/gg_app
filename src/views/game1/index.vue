@@ -14,7 +14,7 @@
         <div
           v-for="(item, index) in nextDataList"
           :key="index"
-          class="w-60 h-28 bg-white"
+          :class="['w-60 h-28', isDark ? 'bg-slate-800' : 'bg-white']"
         >
           <div
             :class="[
@@ -98,7 +98,9 @@ import { columns } from './component/TableColumnList';
 import { Game1Hook } from './utils/hook';
 import { usePublicHooks } from '@/hooks';
 import { PureTableBar } from '@/components/RePureTableBar';
-import { helper } from 'echarts';
+import { useDark } from '@pureadmin/utils';
+
+const { isDark } = useDark();
 
 defineOptions({ name: 'Game1' });
 const { tableHeaderStyle } = usePublicHooks();
@@ -145,6 +147,7 @@ const scrollToEnd = () => {
 };
 
 onMounted(scrollToEnd);
+onUpdated(scrollToEnd);
 
 // timer
 const currentSecond = ref(String(new Date().getSeconds()));

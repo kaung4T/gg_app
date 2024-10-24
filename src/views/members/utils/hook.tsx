@@ -2,8 +2,10 @@ import type { PaginationProps } from '@pureadmin/table';
 import { EditFormType } from './types';
 import { message } from '@/utils/message';
 import { ElMessageBox } from 'element-plus';
+import { useUserStore } from '@/store/user';
 
 export function membersHook() {
+  const userStore = useUserStore();
   const dataList = reactive([]);
   const loading = ref(true);
   const pagination = reactive<PaginationProps>({
@@ -60,6 +62,10 @@ export function membersHook() {
   };
 
   const handleDelete = (row: UserAPI.UserList) => {
+    if (userStore.userInfo.user_id == row.user_id) {
+      return message(t(`Can't delete your own account`), { type: 'error' });
+    }
+
     ElMessageBox.confirm(
       `<div class="text-center">
        <p>${'are you sure you want to delete? '}${row.user_id}</p>

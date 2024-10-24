@@ -8,7 +8,7 @@ module.exports = {
     debug: true,
     func: false,
     trans: false,
-    lngs: ['en', 'ko'],
+    lngs: ['en', 'ko', 'ja'],
     defaultLng: 'en',
     resource: {
       loadPath: './locales/json/{{lng}}.json',

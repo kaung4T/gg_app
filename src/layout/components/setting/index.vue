@@ -246,7 +246,7 @@ onBeforeMount(() => {
       <el-tooltip
         :effect="tooltipEffect"
         class="item"
-        :content="t('侧边栏模式')"
+        :content="t('Sidebar')"
         placement="bottom"
         popper-class="pure-tooltip"
       >

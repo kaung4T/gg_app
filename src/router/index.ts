@@ -172,7 +172,6 @@ router.beforeEach((to: ToRouteType, _from, next) => {
                 const { path, name, meta } = route.children
                   ? route.children[0]
                   : route;
-                console.log('pushing1');
                 useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,
@@ -180,7 +179,6 @@ router.beforeEach((to: ToRouteType, _from, next) => {
                 });
               } else {
                 const { path, name, meta } = route;
-                console.log('pushing2');
                 useMultiTagsStoreHook().handleTags('push', {
                   path,
                   name,

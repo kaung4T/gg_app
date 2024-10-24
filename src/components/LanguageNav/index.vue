@@ -34,9 +34,9 @@ import { useTranslationLang } from '@/layout/hooks/useTranslationLang';
 const { getDropdownItemStyle, getDropdownItemClass } = useNav();
 const { locale, translationLanguage } = useTranslationLang();
 const langNavList = reactive<{ code: string; label: string; fn: Function }[]>([
-  { code: 'zh', fn: () => translationLanguage('zh'), label: '简体中文' },
+  { code: 'ko', fn: () => translationLanguage('ko'), label: 'Korean' },
   { code: 'en', fn: () => translationLanguage('en'), label: 'English' },
-  { code: 'fr', fn: () => translationLanguage('fr'), label: 'French' }
+  { code: 'ja', fn: () => translationLanguage('ja'), label: 'Japanese' }
 ]);
 </script>
 
