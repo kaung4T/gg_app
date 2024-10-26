@@ -1,3 +1,3 @@
-export const mealList = ['Green', 'Red', 'Blue'];
+export const mealList = ['짜장', '짬짜면', '짬뽕'];
 
 export const mealTypeList = ['Double', 'Single'];

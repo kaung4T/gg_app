@@ -25,19 +25,19 @@
             ]"
           >
             <img
-              v-if="item.meal == 'Blue'"
+              v-if="item.meal == '짜장'"
               class="w-[100px]"
               src="/blue.png"
               alt=""
             />
             <img
-              v-if="item.meal == 'Red'"
+              v-if="item.meal == '짬뽕'"
               class="w-[100px]"
               src="/red.png"
               alt=""
             />
             <img
-              v-if="item.meal == 'Green'"
+              v-if="item.meal == '짬짜면'"
               class="w-[100px]"
               src="/green.png"
               alt=""

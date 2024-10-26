@@ -12,7 +12,7 @@ import {
 import { stringify } from 'qs';
 import NProgress from '../progress';
 import { TokenKey } from '@/utils/auth';
-import { storageSession } from '@pureadmin/utils';
+import { storageLocal, storageSession } from '@pureadmin/utils';
 import { useUserStore } from '@/store/user';
 
 const defaultConfig: AxiosRequestConfig = {
@@ -57,6 +57,9 @@ class PureHttp {
           const token: string = storageSession().getItem(TokenKey) ?? '';
           if (token) {
             config.headers['authorization'] = `Bearer ` + token;
+            config.headers['language'] =
+              (storageLocal().getItem('responsive-locale') as any)?.locale ??
+              'en';
           }
         }
         return config;
