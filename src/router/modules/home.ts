@@ -33,6 +33,15 @@ export default {
       }
     },
     {
+      path: '/memberIP',
+      name: 'Member IP',
+      component: () => import('@/views/membersIP/index.vue'),
+      meta: {
+        title: 'Member IP',
+        showLink: VITE_HIDE_HOME === 'true' ? false : true
+      }
+    },
+    {
       path: '/members',
       name: 'Members',
       component: () => import('@/views/members/index.vue'),

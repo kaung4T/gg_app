@@ -24,6 +24,9 @@
         <el-menu-item index="1-1">
           <router-link to="/members" class="text-lg">Members</router-link>
         </el-menu-item>
+        <el-menu-item index="/memberIP">
+          <router-link to="/memberIP" class="text-lg">members IP</router-link>
+        </el-menu-item>
         <el-menu-item index="1-2">
           <router-link to="/ipCrawlerManager" class="text-lg"
             >IP Crawler List</router-link

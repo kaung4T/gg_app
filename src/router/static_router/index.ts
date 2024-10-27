@@ -25,5 +25,13 @@ export const static_routers = [
       showLink: true
     },
     name: 'IP Crawler'
+  },
+  {
+    path: '/memberIP',
+    meta: {
+      title: 'Member IP',
+      showLink: true
+    },
+    name: 'Member IP'
   }
 ];
