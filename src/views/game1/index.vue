@@ -1,5 +1,9 @@
 <template>
   <div class="main">
+    <el-button type="primary" class="float-right" @click="updateMealList">
+      Meal Text
+    </el-button>
+
     <!-- timer -->
     <div class="my-5">
       <div class="text-5xl text-center">00:{{ currentSecond }}</div>
@@ -25,19 +29,19 @@
             ]"
           >
             <img
-              v-if="item.meal == '짜장'"
+              v-if="item.meal?.type == 1"
               class="w-[100px]"
               src="/blue.png"
               alt=""
             />
             <img
-              v-if="item.meal == '짬뽕'"
+              v-if="item.meal?.type == 2"
               class="w-[100px]"
               src="/red.png"
               alt=""
             />
             <img
-              v-if="item.meal == '짬짜면'"
+              v-if="item.meal?.type == 3"
               class="w-[100px]"
               src="/green.png"
               alt=""
@@ -47,7 +51,7 @@
                 {{ item.serial_number }}
               </span>
 
-              <span>{{ item.meal }}</span>
+              <span>{{ item.meal?.meal }}</span>
               <span>{{ item.meal_type }}</span>
               <span>{{ item.order_type }}</span>
               <el-button
@@ -86,6 +90,9 @@
             @page-size-change="handleTableWidthChange"
             @page-current-change="handleCurrentChange"
           >
+            <template #meal="{ row }">
+              {{ row?.meal?.meal ?? '-' }}
+            </template>
             <template #member="{ row }">
               {{ row?.member?.name ?? '-' }}
             </template>
@@ -118,7 +125,9 @@ const {
   loading,
   onSearchNextData,
   nextDataList,
-  addMeal
+  addMeal,
+  mealList,
+  updateMealList
 } = Game1Hook();
 
 const currentItem = ref(null);

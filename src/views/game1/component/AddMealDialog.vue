@@ -13,9 +13,9 @@
       <el-select v-model="newFormInline.meal" clearable>
         <el-option
           v-for="item in mealList"
-          :key="item"
-          :label="item"
-          :value="item"
+          :key="item.type"
+          :label="item.meal"
+          :value="item.id"
         />
       </el-select>
     </el-form-item>
@@ -40,11 +40,12 @@
 
 <script setup lang="ts">
 import { t } from '@/plugins/i18n';
-import { mealList, mealTypeList } from '../utils/types';
+import { mealTypeList } from '../utils/types';
 import { message } from '@/utils/message';
 const emits = defineEmits(['closeDialog']);
 const props = defineProps<{
   row: GAME1API.ORDER;
+  mealList: any;
 }>();
 
 const newFormInline = reactive({
@@ -59,7 +60,7 @@ const closeDialog = () => {
 const confirmClick = async () => {
   const res = await API.updateOrder({
     id: props.row.id,
-    meal: newFormInline.meal,
+    meal_id: newFormInline.meal,
     meal_type: newFormInline.meal_type
   });
 

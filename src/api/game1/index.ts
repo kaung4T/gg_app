@@ -1,6 +1,13 @@
 import { http } from '@/utils/http';
 
 export const Game1 = {
+  mealList: () => http.request<COMMON.ListData<any>>('post', '/v1/meal_list'),
+
+  updateMealList: (data: { type: number; meal: string }[]) =>
+    http.request<COMMON.BASE_RES_TYPE<any>>('post', '/v1/meal_list/update', {
+      data
+    }),
+
   generateOrder: () =>
     http.request<COMMON.BASE_RES_TYPE<any>>('post', '/v1/generate_order'),
 
@@ -12,7 +19,7 @@ export const Game1 = {
       data
     }),
 
-  updateOrder: (data: { id: number; meal: string; meal_type: string }) =>
+  updateOrder: (data: { id: number; meal_id: string; meal_type: string }) =>
     http.request<COMMON.BASE_RES_TYPE<any>>('post', '/v1/manual_order/update', {
       data
     })

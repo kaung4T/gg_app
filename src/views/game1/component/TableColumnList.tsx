@@ -9,7 +9,7 @@ export const columns: TableColumnList = [
   },
   {
     label: t('Meal'),
-    prop: 'meal'
+    slot: 'meal'
     // headerRenderer: d => handleTableWidth(d, t('Meal'), 'auto')
   },
   {

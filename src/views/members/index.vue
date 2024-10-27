@@ -64,6 +64,6 @@ const {
   handleDelete,
   handleAdd,
   pagination,
-  loading,
+  loading
 } = membersHook();
 </script>

@@ -2,10 +2,12 @@ import { message } from '@/utils/message';
 import { PaginationProps } from '@pureadmin/table';
 import { addDialog, closeDialog } from '@/components/ReDialog';
 import AddMealDialog from '../component/AddMealDialog.vue';
+import EditMealsDialog from '../component/EditMealsDialog.vue';
 
 export function Game1Hook() {
   const dataList = reactive([]);
   const nextDataList = reactive([]);
+  const mealList = reactive([]);
   const loading = ref(true);
 
   const pagination = reactive<PaginationProps>({
@@ -48,6 +50,20 @@ export function Game1Hook() {
     }
   };
 
+  const onSearchMealList = async () => {
+    try {
+      const res = await API.mealList();
+
+      if (!res.status) return message(res.message, { type: 'error' });
+
+      mealList.length = 0;
+
+      mealList.push(...res.data.data);
+    } catch (error) {
+      loading.value = false;
+    }
+  };
+
   const onSearchNextData = async () => {
     try {
       loading.value = true;
@@ -70,7 +86,6 @@ export function Game1Hook() {
   };
 
   const addMeal = (row: GAME1API.ORDER) => {
-    console.log({ row });
     addDialog({
       title: t('Add Manual Meal'),
       width: '20%',
@@ -79,8 +94,28 @@ export function Game1Hook() {
       contentRenderer: ({ options, index }) =>
         h(AddMealDialog, {
           row,
+          mealList,
           onCloseDialog: _ => {
             onSearchNextData();
+            closeDialog(options, index);
+          }
+        })
+    });
+  };
+
+  const updateMealList = () => {
+    addDialog({
+      title: t('Update Meal Text'),
+      width: '20%',
+      closeOnClickModal: false,
+      hideFooter: true,
+      contentRenderer: ({ options, index }) =>
+        h(EditMealsDialog, {
+          mealList,
+          onCloseDialog: _ => {
+            onSearch();
+            onSearchNextData();
+            onSearchMealList();
             closeDialog(options, index);
           }
         })
@@ -90,6 +125,7 @@ export function Game1Hook() {
   onMounted(() => {
     onSearch();
     onSearchNextData();
+    onSearchMealList();
   });
 
   return {
@@ -101,6 +137,9 @@ export function Game1Hook() {
     loading,
     onSearchNextData,
     nextDataList,
-    addMeal
+    addMeal,
+    mealList,
+    onSearchMealList,
+    updateMealList
   };
 }
