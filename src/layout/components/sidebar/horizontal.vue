@@ -18,14 +18,16 @@
       </el-menu-item>
       <el-sub-menu index="1">
         <template #title>
-          <el-icon><MenuSetting/></el-icon>
+          <el-icon><MenuSetting /></el-icon>
           <span class="text-lg">Setting</span>
         </template>
         <el-menu-item index="1-1">
           <router-link to="/members" class="text-lg">Members</router-link>
         </el-menu-item>
         <el-menu-item index="1-2">
-          <router-link to="/ipManager" class="text-lg">IP Manager</router-link>
+          <router-link to="/ipCrawlerManager" class="text-lg"
+            >IP Crawler List</router-link
+          >
         </el-menu-item>
       </el-sub-menu>
     </el-menu>
@@ -94,9 +96,7 @@ import { useResetPasswordHook } from '@/hooks/resetPasswordHook';
 import { useUserStore } from '@/store/user';
 import { Document, Menu as IconMenu, Location } from '@element-plus/icons-vue';
 import Setting from '@iconify-icons/ri/settings-3-line';
-import {
-  Setting as MenuSetting
-} from '@element-plus/icons-vue';
+import { Setting as MenuSetting } from '@element-plus/icons-vue';
 
 const menuRef = ref();
 

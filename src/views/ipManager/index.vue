@@ -12,7 +12,7 @@
     <PureTableBar
       :columns="columns"
       @refresh="onSearch('reload')"
-      title="IP List"
+      title="IP Crawler List"
     >
       <template v-slot="{ size, dynamicColumns }">
         <pure-table
@@ -63,7 +63,7 @@ import { PureTableBar } from '@/components/RePureTableBar';
 import { IPHook } from './utils/hook';
 import EditForm from './component/EditForm.vue';
 
-defineOptions({ name: 'IP Manager' });
+defineOptions({ name: 'IP Crawler' });
 const { tableHeaderStyle } = usePublicHooks();
 
 const {

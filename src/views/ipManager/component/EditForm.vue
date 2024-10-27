@@ -43,7 +43,7 @@
       </el-form-item>
       <el-form-item
         class="float-right"
-        :label="`${t('IP rate limit')}`"
+        :label="`${t('IP crawling deny (2 counts in 10second)')}`"
         prop="name"
       >
         <el-switch

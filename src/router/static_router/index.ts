@@ -19,11 +19,11 @@ export const static_routers = [
     name: 'Members'
   },
   {
-    path: '/ipManager',
+    path: '/ipCrawlerManager',
     meta: {
-      title: 'IP Manager',
+      title: 'IP Crawler',
       showLink: true
     },
-    name: 'IP Manager'
+    name: 'IP Crawler'
   }
 ];

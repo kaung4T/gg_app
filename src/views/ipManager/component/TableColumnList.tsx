@@ -18,11 +18,11 @@ export const columns: TableColumnList = [
     prop: 'ip'
     // headerRenderer: d => handleTableWidth(d, t('IP'), 'auto')
   },
-  {
-    label: t('Status'),
-    slot: 'status'
-    // headerRenderer: d => handleTableWidth(d, t('Status'), 'auto')
-  },
+  // {
+  //   label: t('Status'),
+  //   slot: 'status'
+  //   // headerRenderer: d => handleTableWidth(d, t('Status'), 'auto')
+  // },
   {
     label: t('Created At'),
     prop: 'created_at',

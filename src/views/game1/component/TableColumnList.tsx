@@ -24,9 +24,7 @@ export const columns: TableColumnList = [
   },
   {
     label: t('Creator'),
-    prop: 'member',
-    // headerRenderer: d => handleTableWidth(d, t('Creator'), 'auto'),
-    formatter: ({ member }) => member?.name || '-'
+    slot: 'member'
   },
   {
     label: t('Created At'),

@@ -85,7 +85,11 @@
             :header-cell-style="tableHeaderStyle"
             @page-size-change="handleTableWidthChange"
             @page-current-change="handleCurrentChange"
-          />
+          >
+            <template #member="{ row }">
+              {{ row?.member?.name ?? '-' }}
+            </template>
+          </pure-table>
         </template>
       </PureTableBar>
     </div>
@@ -99,6 +103,7 @@ import { Game1Hook } from './utils/hook';
 import { usePublicHooks } from '@/hooks';
 import { PureTableBar } from '@/components/RePureTableBar';
 import { useDark } from '@pureadmin/utils';
+import dayjs from 'dayjs';
 
 const { isDark } = useDark();
 

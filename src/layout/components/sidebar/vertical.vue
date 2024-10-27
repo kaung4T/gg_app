@@ -20,9 +20,9 @@
           <el-menu-item index="/members">
             <router-link to="/members" class="text-lg">Members</router-link>
           </el-menu-item>
-          <el-menu-item index="/ipManager">
-            <router-link to="/ipManager" class="text-lg"
-              >IP Manager</router-link
+          <el-menu-item index="/ipCrawlerManager">
+            <router-link to="/ipCrawlerManager" class="text-lg"
+              >IP Crawler List</router-link
             >
           </el-menu-item>
         </el-sub-menu>

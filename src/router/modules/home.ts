@@ -24,11 +24,11 @@ export default {
       }
     },
     {
-      path: '/ipManager',
-      name: 'IP Manager',
+      path: '/ipCrawlerManager',
+      name: 'IP Crawler',
       component: () => import('@/views/ipManager/index.vue'),
       meta: {
-        title: 'IP Manager',
+        title: 'IP Crawler',
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     },
