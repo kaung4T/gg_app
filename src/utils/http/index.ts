@@ -75,6 +75,11 @@ class PureHttp {
     const instance = PureHttp.axiosInstance;
     instance.interceptors.response.use(
       (response: PureHttpResponse) => {
+        if (Number(response.data.statusCode) == 430) {
+          useUserStore().logOut();
+          return;
+        }
+
         const $config = response.config;
 
         NProgress.done();
