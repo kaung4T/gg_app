@@ -75,7 +75,8 @@ class PureHttp {
     const instance = PureHttp.axiosInstance;
     instance.interceptors.response.use(
       (response: PureHttpResponse) => {
-        if (Number(response.data.statusCode) == 430) {
+        const currentUrl = window.location.hash.split('#')[1];
+        if (Number(response.data.statusCode) == 430 && currentUrl != '/login') {
           useUserStore().logOut();
           return;
         }
