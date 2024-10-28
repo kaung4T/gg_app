@@ -1,9 +1,11 @@
+import { t } from '@/plugins/i18n';
+
 export const static_routers = [
   {
     path: '/game1',
-    name: 'Game1',
+    name: t('Game 1'),
     meta: {
-      title: 'Game1',
+      title: t('Game 1'),
       showLink: true
     },
     id: 0,
@@ -13,25 +15,25 @@ export const static_routers = [
   {
     path: '/members',
     meta: {
-      title: 'Members',
+      title: t('Members'),
       showLink: true
     },
-    name: 'Members'
+    name: t('Members')
   },
   {
     path: '/ipCrawlerManager',
     meta: {
-      title: 'IP Crawler',
+      title: t('IP Crawler List'),
       showLink: true
     },
-    name: 'IP Crawler'
+    name: t('IP Crawler List')
   },
   {
     path: '/memberIP',
     meta: {
-      title: 'Member IP',
+      title: t('Members IP'),
       showLink: true
     },
-    name: 'Member IP'
+    name: t('Members IP')
   }
 ];

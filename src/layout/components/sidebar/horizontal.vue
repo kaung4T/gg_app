@@ -13,24 +13,28 @@
       <el-menu-item index="2" class="hover:bg-transparent!">
         <el-icon><icon-menu /></el-icon>
         <span class="text-lg">
-          <router-link to="/game1">Game 1</router-link>
+          <router-link to="/game1">{{ t('Game 1') }}</router-link>
         </span>
       </el-menu-item>
       <el-sub-menu index="1">
         <template #title>
           <el-icon><MenuSetting /></el-icon>
-          <span class="text-lg">Setting</span>
+          <span class="text-lg">{{ t('Setting') }}</span>
         </template>
         <el-menu-item index="1-1">
-          <router-link to="/members" class="text-lg">Members</router-link>
+          <router-link to="/members" class="text-lg">{{
+            t('Members')
+          }}</router-link>
         </el-menu-item>
         <el-menu-item index="/memberIP">
-          <router-link to="/memberIP" class="text-lg">members IP</router-link>
+          <router-link to="/memberIP" class="text-lg">{{
+            t('Members IP')
+          }}</router-link>
         </el-menu-item>
         <el-menu-item index="1-2">
-          <router-link to="/ipCrawlerManager" class="text-lg"
-            >IP Crawler List</router-link
-          >
+          <router-link to="/ipCrawlerManager" class="text-lg">{{
+            t('IP Crawler List')
+          }}</router-link>
         </el-menu-item>
       </el-sub-menu>
     </el-menu>

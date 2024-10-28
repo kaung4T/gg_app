@@ -1,7 +1,7 @@
 <template>
   <div class="main">
     <el-button type="primary" class="float-right" @click="updateMealList">
-      Meal Text
+      {{ t('Meal') }}
     </el-button>
 
     <!-- timer -->
@@ -13,16 +13,16 @@
       <transition-group
         name="fade"
         tag="div"
-        class="flex space-x-4 p-4 justify-around"
+        class="flex flex-wrap space-x-4 p-4 justify-around"
       >
         <div
           v-for="(item, index) in nextDataList"
           :key="index"
-          :class="['w-60 h-28', isDark ? 'bg-slate-800' : 'bg-white']"
+          :class="['w-48 h-24 my-2', isDark ? 'bg-slate-800' : 'bg-white']"
         >
           <div
             :class="[
-              'flex items-center justify-center w-60 h-28 rounded-md border',
+              'flex items-center justify-center w-48 h-24 rounded-md border',
               currentItem?.id === item?.id
                 ? 'border-blue-700 border-2 shadow-blue-400 shadow-md'
                 : ''
@@ -30,24 +30,24 @@
           >
             <img
               v-if="item.meal?.type == 1"
-              class="w-[100px]"
+              class="w-[80px]"
               src="/blue.png"
               alt=""
             />
             <img
               v-if="item.meal?.type == 2"
-              class="w-[100px]"
+              class="w-[80px]"
               src="/red.png"
               alt=""
             />
             <img
               v-if="item.meal?.type == 3"
-              class="w-[100px]"
+              class="w-[80px]"
               src="/green.png"
               alt=""
             />
-            <div class="flex flex-col justify-start ml-3 font-bold text-[15px]">
-              <span :class="!item.meal ? 'text-center mb-2' : ''">
+            <div class="flex flex-col justify-start ml-2 font-bold text-[13px]">
+              <span :class="!item.meal ? 'text-center mb-1' : ''">
                 {{ item.serial_number }}
               </span>
 
@@ -57,6 +57,7 @@
               <el-button
                 v-if="!item.meal"
                 type="primary"
+                size="small"
                 @click="() => addMeal(item)"
               >
                 {{ t('Add Meal') }}

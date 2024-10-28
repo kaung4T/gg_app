@@ -8,10 +8,10 @@
     <el-form-item :label="t('Meal 1')" prop="meal" required>
       <el-input v-model="newFormInline.meal1" clearable />
     </el-form-item>
-    <el-form-item :label="t('Meal2')" prop="meal" required>
+    <el-form-item :label="t('Meal 2')" prop="meal" required>
       <el-input v-model="newFormInline.meal2" clearable />
     </el-form-item>
-    <el-form-item :label="t('Meal3')" prop="meal" required>
+    <el-form-item :label="t('Meal 3')" prop="meal" required>
       <el-input v-model="newFormInline.meal3" clearable />
     </el-form-item>
 

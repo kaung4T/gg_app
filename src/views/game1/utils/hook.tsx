@@ -105,7 +105,7 @@ export function Game1Hook() {
 
   const updateMealList = () => {
     addDialog({
-      title: t('Update Meal Text'),
+      title: t('Update Meal'),
       width: '20%',
       closeOnClickModal: false,
       hideFooter: true,

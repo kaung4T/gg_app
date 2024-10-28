@@ -62,7 +62,6 @@
   "k-52e3e703": "Enter IP",
   "k-2052d515": "Add IP",
   "k-4ca3216f": "Search",
-  "k79a32e3b": "IP rate limit",
   "k-dd1f343": "No",
   "k7cac602a": "Status",
   "k-648fdb32": "Operation",
@@ -83,5 +82,15 @@
   "k-1ce6b4b4": "Can't delete your own account",
   "k-3bafb267": "User Delete",
   "k43cb94ff": "Password must be at least 8 charactors(letters and numbers)",
-  "k23549991": "user id must be at least 6 letters"
+  "k23549991": "user id must be at least 6 letters",
+  "k44c7c707": "Game 1",
+  "k50c98104": "Setting",
+  "k-75e2149d": "Members",
+  "k19c10947": "Members IP",
+  "k-57db8241": "IP Crawler List",
+  "k55dbc696": "Meal 1",
+  "k2233b8e8": "Meal 2",
+  "k5534887e": "Meal 3",
+  "k-3683c1a3": "Update Meal Text",
+  "k-5fcb23f3": "IP crawling deny (2 counts in 10second)"
 }

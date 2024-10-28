@@ -241,7 +241,7 @@ onBeforeMount(() => {
       @change="dataThemeChange"
     />
 
-    <el-divider>Navigation</el-divider>
+    <el-divider>{{ t('Sidebar') }}</el-divider>
     <ul class="pure-theme">
       <el-tooltip
         :effect="tooltipEffect"

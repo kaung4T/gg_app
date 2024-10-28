@@ -1,52 +1,53 @@
 import { GAME1 } from '../const_rank';
+import { t } from '@/plugins/i18n';
 
 const { VITE_HIDE_HOME } = import.meta.env;
 const Layout = () => import('@/layout/index.vue');
 
 export default {
   path: '/',
-  name: 'Game1',
+  name: t('Game 1'),
   component: Layout,
   redirect: '/game1',
   meta: {
     icon: 'homeFilled',
-    title: 'Game1',
+    title: t('Game 1'),
     rank: GAME1
   },
   children: [
     {
       path: '/game1',
-      name: 'Game1',
+      name: t('Game 1'),
       component: () => import('@/views/game1/index.vue'),
       meta: {
-        title: 'Game1',
+        title: t('Game 1'),
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     },
     {
       path: '/ipCrawlerManager',
-      name: 'IP Crawler',
+      name: t('IP Crawler List'),
       component: () => import('@/views/ipManager/index.vue'),
       meta: {
-        title: 'IP Crawler',
+        title: t('IP Crawler List'),
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     },
     {
       path: '/memberIP',
-      name: 'Member IP',
+      name: t('Members IP'),
       component: () => import('@/views/membersIP/index.vue'),
       meta: {
-        title: 'Member IP',
+        title: t('Members IP'),
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     },
     {
       path: '/members',
-      name: 'Members',
+      name: t('Members'),
       component: () => import('@/views/members/index.vue'),
       meta: {
-        title: 'Members',
+        title: t('Members'),
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     }

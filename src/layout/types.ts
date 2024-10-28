@@ -1,4 +1,5 @@
 import type { IconifyIcon } from '@iconify/vue';
+import { t } from '@/plugins/i18n';
 const { VITE_HIDE_HOME } = import.meta.env;
 
 export const routerArrays: Array<RouteConfigs> =
@@ -7,7 +8,7 @@ export const routerArrays: Array<RouteConfigs> =
         {
           path: '/game1',
           meta: {
-            title: 'Game1',
+            title: t('Game 1'),
             icon: 'homeFilled'
           }
         }
