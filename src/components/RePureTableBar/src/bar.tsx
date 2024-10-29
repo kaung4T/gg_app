@@ -1,3 +1,4 @@
+import { t } from '@/plugins/i18n';
 import { useEpThemeStoreHook } from '@/store/epTheme';
 import { defineComponent, ref, computed, type PropType, nextTick } from 'vue';
 import {
@@ -140,19 +141,19 @@ export default defineComponent({
             style={getDropdownItemStyle.value('large')}
             onClick={() => (size.value = 'large')}
           >
-            宽松
+            {t('large')}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value('default')}
             onClick={() => (size.value = 'default')}
           >
-            默认
+            {t('default')}
           </el-dropdown-item>
           <el-dropdown-item
             style={getDropdownItemStyle.value('small')}
             onClick={() => (size.value = 'small')}
           >
-            紧凑
+            {t('small')}
           </el-dropdown-item>
         </el-dropdown-menu>
       )
@@ -237,7 +238,7 @@ export default defineComponent({
                   <el-divider direction="vertical" />
                 </>
               ) : null}
-              <el-tooltip effect="dark" content="刷新" placement="top">
+              <el-tooltip effect="dark" content={t('Refresh')} placement="top">
                 <RefreshIcon
                   class={[
                     '!w-[16px]',
@@ -248,7 +249,7 @@ export default defineComponent({
                 />
               </el-tooltip>
               <el-divider direction="vertical" />
-              <el-tooltip effect="dark" content="密度" placement="top">
+              <el-tooltip effect="dark" content={t('size')} placement="top">
                 <el-dropdown v-slots={dropdown} trigger="click">
                   <CollapseIcon class={['w-[16px]', iconClass.value]} />
                 </el-dropdown>
@@ -265,13 +266,13 @@ export default defineComponent({
                 <div class={[topClass.value]}>
                   <el-checkbox
                     class="!-mr-1"
-                    label="列展示"
+                    label={t('Column')}
                     v-model={checkAll.value}
                     indeterminate={isIndeterminate.value}
                     onChange={value => handleCheckAllChange(value)}
                   />
                   <el-button type="primary" link onClick={() => onReset()}>
-                    重置
+                    {t('Reset')}
                   </el-button>
                 </div>
 
@@ -338,7 +339,7 @@ export default defineComponent({
               virtual-ref={buttonRef.value}
               virtual-triggering
               trigger="hover"
-              content="列设置"
+              content={t('Columns')}
             />
           </div>
           {slots.default({

@@ -7,11 +7,7 @@
       @addMemberIP="handleAdd"
     />
 
-    <PureTableBar
-      :columns="columns"
-      @refresh="onSearch('reload')"
-      title="Member IP List"
-    >
+    <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
       <template v-slot="{ size, dynamicColumns }">
         <pure-table
           align-whole="center"

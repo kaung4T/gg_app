@@ -70,11 +70,7 @@
 
     <!-- History -->
     <div>
-      <PureTableBar
-        :columns="columns"
-        @refresh="onSearch('reload')"
-        title="Order History"
-      >
+      <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
         <template v-slot="{ size, dynamicColumns }">
           <pure-table
             :style="{ height: 'calc(100vh - 500px)' }"

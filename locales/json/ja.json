@@ -89,8 +89,16 @@
   "k19c10947": "Members IP",
   "k-57db8241": "IP Crawler List",
   "k55dbc696": "Meal 1",
-  "k2233b8e8": "Meal2",
-  "k5534887e": "Meal3",
-  "k-3683c1a3": "Update Meal Text",
-  "k-5fcb23f3": "IP crawling deny (2 counts in 10second)"
+  "k-5fcb23f3": "IP crawling deny (2 counts in 10second)",
+  "k596b29be": "large",
+  "k-1ca1ff21": "default",
+  "k7545ea13": "small",
+  "k-50c36699": "Refresh",
+  "k-83fdb96": "size",
+  "k7aff8248": "Column",
+  "k-6ea36fb7": "Reset",
+  "k6373f92b": "Columns",
+  "k-332d68d4": "Meal 2",
+  "k-442a5846": "Meal 3",
+  "k17b68ef4": "Update Meal"
 }

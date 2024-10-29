@@ -13,7 +13,7 @@ export function useTranslationLang(ref?: Ref) {
     $storage.locale = { locale: type };
     locale.value = type;
     ref && handleResize(ref.value);
-    // window.location.reload();
+    window.location.reload();
   }
   watch(
     () => locale.value,

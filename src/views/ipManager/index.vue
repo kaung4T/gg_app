@@ -9,11 +9,7 @@
       @handleUpdateRateLimit="handleUpdateRateLimit"
     />
 
-    <PureTableBar
-      :columns="columns"
-      @refresh="onSearch('reload')"
-      title="IP Crawler List"
-    >
+    <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
       <template v-slot="{ size, dynamicColumns }">
         <pure-table
           align-whole="center"
