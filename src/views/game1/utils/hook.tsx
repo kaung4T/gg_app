@@ -27,12 +27,15 @@ export function Game1Hook() {
     onSearch();
   };
 
-  const onSearch = async (type?: string) => {
+  const onSearch = async (type?: string, searchForm?: any) => {
     try {
       if (type === 'reload') pagination.currentPage = 1;
       loading.value = true;
 
       const res = await API.game1ShowedOrderList({
+        order_type: searchForm?.orderType,
+        date_from: searchForm?.dateFrom,
+        date_to: searchForm?.dateTo,
         pageSize: pagination.pageSize,
         page: pagination.currentPage
       });
@@ -123,7 +126,7 @@ export function Game1Hook() {
   };
 
   onMounted(() => {
-    onSearch();
+    onSearch('reload');
     onSearchNextData();
     onSearchMealList();
   });

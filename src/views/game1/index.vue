@@ -72,6 +72,7 @@
     <div>
       <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
         <template v-slot="{ size, dynamicColumns }">
+          <SearchForm class="mb-5" @onSearch="onSearch" />
           <pure-table
             :style="{ height: 'calc(100vh - 500px)' }"
             align-whole="center"
@@ -107,7 +108,7 @@ import { Game1Hook } from './utils/hook';
 import { usePublicHooks } from '@/hooks';
 import { PureTableBar } from '@/components/RePureTableBar';
 import { useDark } from '@pureadmin/utils';
-import dayjs from 'dayjs';
+import SearchForm from './component/SearchForm.vue';
 
 const { isDark } = useDark();
 

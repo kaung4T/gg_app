@@ -1,0 +1,25 @@
+<CustomDate 
+    className="!w-full !ml-0"
+    :placeholder=""
+    v-model:val="selectDate"
+    format="YYYY-MM-DD HH:mm:ss"
+    @changeDate="changeDate"
+    :isShowShortCuts="true"
+    :isSingle="true"
+    :disableDate="disableDate"
+    :start-placeholder="days(form.startTime).format('YYYY-MM-DD HH:mm:ss')"
+    :end-placeholder="days(form.endTime).format('YYYY-MM-DD HH:mm:ss')"
+    :isDateTime="true"
+/>
+
+const selectDate = ref('');
+
+const changeDate = (t: any) => {
+    if(!t) {
+        form.startTime = '';
+        form.endTime = '';
+    }else {
+        form.startTime = dayjs(t[0]).format('YYYY-MM-DD HH:mm:ss');
+        form.endTime = daysjs(tp[1]).format('YYYY-MM-DD HH:mm:ss');
+    }
+}

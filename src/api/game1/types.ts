@@ -1,6 +1,6 @@
 declare namespace GAME1API {
   type ORDER = {
-    id: number;
+    id: string;
     member: any;
     serial_number: string;
     meal: string;
