@@ -20,7 +20,7 @@ import './style/tailwind.css';
 import 'element-plus/dist/index.css';
 import './assets/iconfont/iconfont.js';
 import './assets/iconfont/iconfont.css';
-import 'plus-pro-components/es/components/search/style/css';
+// import 'plus-pro-components/es/components/search/style/css';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/light.css';
 
