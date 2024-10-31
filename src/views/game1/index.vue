@@ -74,7 +74,7 @@
         <template v-slot="{ size, dynamicColumns }">
           <SearchForm class="mb-5" @onSearch="onSearch" />
           <pure-table
-            :style="{ height: 'calc(100vh - 500px)' }"
+            :style="{ height: 'calc(100vh - 600px)' }"
             align-whole="center"
             table-layout="auto"
             :loading="loading"
