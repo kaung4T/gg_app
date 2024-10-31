@@ -14,6 +14,7 @@ import NProgress from '../progress';
 import { TokenKey } from '@/utils/auth';
 import { storageLocal, storageSession } from '@pureadmin/utils';
 import { useUserStore } from '@/store/user';
+import { error404 } from './error';
 
 const defaultConfig: AxiosRequestConfig = {
   baseURL: '/api',
@@ -100,6 +101,8 @@ class PureHttp {
           case 403:
             useUserStore().logOut();
             break;
+          case 404:
+            error404(error);
         }
         const $error = error;
         $error.isCancelRequest = Axios.isCancel($error);

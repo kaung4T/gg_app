@@ -5,7 +5,8 @@ dist-ssr
 *.local
 .eslintcache
 report.html
-
+*.auto-imports.d.ts
+src/auto-imports.d.ts
 yarn.lock
 npm-debug.log*
 .pnpm-error.log*
@@ -13,6 +14,7 @@ npm-debug.log*
 tests/**/coverage/
 src/demo.md
 .vscode
+st.md
 
 src/test.html
 

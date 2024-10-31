@@ -7,29 +7,29 @@ import {
   onMounted,
   CSSProperties,
   getCurrentInstance
-} from "vue";
-import { tagsViewsType } from "../types";
-import { useEventListener } from "@vueuse/core";
-import { useRoute, useRouter } from "vue-router";
-import { t } from "@/plugins/i18n";
-import { responsiveStorageNameSpace } from "@/config";
-import { useSettingStoreHook } from "@/store/settings";
-import { useMultiTagsStoreHook } from "@/store/multiTags";
+} from 'vue';
+import { tagsViewsType } from '../types';
+import { useEventListener } from '@vueuse/core';
+import { useRoute, useRouter } from 'vue-router';
+import { t } from '@/plugins/i18n';
+import { responsiveStorageNameSpace } from '@/config';
+import { useSettingStoreHook } from '@/store/settings';
+import { useMultiTagsStoreHook } from '@/store/multiTags';
 import {
   isEqual,
   isBoolean,
   storageLocal,
   toggleClass,
   hasClass
-} from "@pureadmin/utils";
+} from '@pureadmin/utils';
 
-import Fullscreen from "@iconify-icons/ri/fullscreen-fill";
-import CloseAllTags from "@iconify-icons/ri/subtract-line";
-import CloseOtherTags from "@iconify-icons/ri/text-spacing";
-import CloseRightTags from "@iconify-icons/ri/text-direction-l";
-import CloseLeftTags from "@iconify-icons/ri/text-direction-r";
-import RefreshRight from "@iconify-icons/ep/refresh-right";
-import Close from "@iconify-icons/ep/close";
+import Fullscreen from '@iconify-icons/ri/fullscreen-fill';
+import CloseAllTags from '@iconify-icons/ri/subtract-line';
+import CloseOtherTags from '@iconify-icons/ri/text-spacing';
+import CloseRightTags from '@iconify-icons/ri/text-direction-l';
+import CloseLeftTags from '@iconify-icons/ri/text-direction-r';
+import RefreshRight from '@iconify-icons/ep/refresh-right';
+import Close from '@iconify-icons/ep/close';
 
 export function useTags() {
   const route = useRoute();
@@ -49,7 +49,7 @@ export function useTags() {
   const showModel = ref(
     storageLocal().getItem<StorageConfigs>(
       `${responsiveStorageNameSpace()}configure`
-    )?.showModel || "smart"
+    )?.showModel || 'smart'
   );
   /** 是否隐藏标签页，默认显示 */
   const showTags =
@@ -57,7 +57,7 @@ export function useTags() {
       storageLocal().getItem<StorageConfigs>(
         `${responsiveStorageNameSpace()}configure`
       ).hideTabs
-    ) ?? ref("false");
+    ) ?? ref('false');
   const multiTags: any = computed(() => {
     return useMultiTagsStoreHook().multiTags;
   });
@@ -65,56 +65,56 @@ export function useTags() {
   const tagsViews = reactive<Array<tagsViewsType>>([
     {
       icon: RefreshRight,
-      text: t("Reload"),
+      text: t('Reload'),
       divided: false,
       disabled: false,
       show: true
     },
     {
       icon: Close,
-      text: t("Close the current tab"),
+      text: t('Close the current tab'),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseLeftTags,
-      text: t("Close the left tab"),
+      text: t('Close the left tab'),
       divided: true,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseRightTags,
-      text: t("Close the right tab"),
+      text: t('Close the right tab'),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: CloseOtherTags,
-      text: t("Close other tabs"),
+      text: t('Close other tabs'),
       divided: true,
       disabled: multiTags.value.length > 2 ? false : true,
       show: true
     },
     {
       icon: CloseAllTags,
-      text: t("Close all tabs"),
+      text: t('Close all tabs'),
       divided: false,
       disabled: multiTags.value.length > 1 ? false : true,
       show: true
     },
     {
       icon: Fullscreen,
-      text: t("full screen"),
+      text: t('full screen'),
       divided: true,
       disabled: false,
       show: true
     },
     {
       icon: Fullscreen,
-      text: t("Content area full screen"),
+      text: t('Content area full screen'),
       divided: false,
       disabled: false,
       show: true
@@ -142,13 +142,13 @@ export function useTags() {
 
   const linkIsActive = computed(() => {
     return item => {
-      return conditionHandle(item, "is-active", "");
+      return conditionHandle(item, 'is-active', '');
     };
   });
 
   const scheduleIsActive = computed(() => {
     return item => {
-      return conditionHandle(item, "schedule-active", "");
+      return conditionHandle(item, 'schedule-active', '');
     };
   });
 
@@ -159,7 +159,7 @@ export function useTags() {
   });
 
   const getContextMenuStyle = computed((): CSSProperties => {
-    return { left: buttonLeft.value + "px", top: buttonTop.value + "px" };
+    return { left: buttonLeft.value + 'px', top: buttonTop.value + 'px' };
   });
 
   const closeMenu = () => {
@@ -169,37 +169,37 @@ export function useTags() {
   /** 鼠标移入添加激活样式 */
   function onMouseenter(index) {
     if (index) activeIndex.value = index;
-    if (unref(showModel) === "smart") {
-      if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
+    if (unref(showModel) === 'smart') {
+      if (hasClass(instance.refs['schedule' + index][0], 'schedule-active'))
         return;
-      toggleClass(true, "schedule-in", instance.refs["schedule" + index][0]);
-      toggleClass(false, "schedule-out", instance.refs["schedule" + index][0]);
+      toggleClass(true, 'schedule-in', instance.refs['schedule' + index][0]);
+      toggleClass(false, 'schedule-out', instance.refs['schedule' + index][0]);
     } else {
-      if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
-      toggleClass(true, "card-in", instance.refs["dynamic" + index][0]);
-      toggleClass(false, "card-out", instance.refs["dynamic" + index][0]);
+      if (hasClass(instance.refs['dynamic' + index][0], 'card-active')) return;
+      toggleClass(true, 'card-in', instance.refs['dynamic' + index][0]);
+      toggleClass(false, 'card-out', instance.refs['dynamic' + index][0]);
     }
   }
 
   /** 鼠标移出恢复默认样式 */
   function onMouseleave(index) {
     activeIndex.value = -1;
-    if (unref(showModel) === "smart") {
-      if (hasClass(instance.refs["schedule" + index][0], "schedule-active"))
+    if (unref(showModel) === 'smart') {
+      if (hasClass(instance.refs['schedule' + index][0], 'schedule-active'))
         return;
-      toggleClass(false, "schedule-in", instance.refs["schedule" + index][0]);
-      toggleClass(true, "schedule-out", instance.refs["schedule" + index][0]);
+      toggleClass(false, 'schedule-in', instance.refs['schedule' + index][0]);
+      toggleClass(true, 'schedule-out', instance.refs['schedule' + index][0]);
     } else {
-      if (hasClass(instance.refs["dynamic" + index][0], "card-active")) return;
-      toggleClass(false, "card-in", instance.refs["dynamic" + index][0]);
-      toggleClass(true, "card-out", instance.refs["dynamic" + index][0]);
+      if (hasClass(instance.refs['dynamic' + index][0], 'card-active')) return;
+      toggleClass(false, 'card-in', instance.refs['dynamic' + index][0]);
+      toggleClass(true, 'card-out', instance.refs['dynamic' + index][0]);
     }
   }
 
   function onContentFullScreen() {
     pureSetting.hiddenSideBar
-      ? pureSetting.changeSetting({ key: "hiddenSideBar", value: false })
-      : pureSetting.changeSetting({ key: "hiddenSideBar", value: true });
+      ? pureSetting.changeSetting({ key: 'hiddenSideBar', value: false })
+      : pureSetting.changeSetting({ key: 'hiddenSideBar', value: true });
   }
 
   onMounted(() => {
@@ -207,7 +207,7 @@ export function useTags() {
       const configure = storageLocal().getItem<StorageConfigs>(
         `${responsiveStorageNameSpace()}configure`
       );
-      configure.showModel = "card";
+      configure.showModel = 'card';
       storageLocal().setItem(
         `${responsiveStorageNameSpace()}configure`,
         configure
@@ -218,7 +218,7 @@ export function useTags() {
   watch(
     () => visible.value,
     () => {
-      useEventListener(document, "click", closeMenu);
+      useEventListener(document, 'click', closeMenu);
     }
   );
 

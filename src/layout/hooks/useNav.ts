@@ -83,7 +83,7 @@ export function useNav() {
         type: 'warning',
         center: true,
         confirmButtonText: t('Confirm'),
-        cancelButtonText: t('Cancel'),
+        cancelButtonText: t('Cancel')
       }
     ).then(() => {
       useUserStore().logOut();

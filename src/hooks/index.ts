@@ -34,10 +34,18 @@ export function usePublicHooks() {
     };
   });
 
+  const tableHeaderStyleBlue = computed(() => {
+    return {
+      background: 'var(--el-color-primary)',
+      color: 'white'
+    };
+  });
+
   return {
     isDark,
     switchStyle,
     tagStyle,
-    tableHeaderStyle
+    tableHeaderStyle,
+    tableHeaderStyleBlue
   };
 }

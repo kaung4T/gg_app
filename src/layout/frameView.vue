@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-import { useRoute } from "vue-router";
-import { ref, unref, onMounted, nextTick } from "vue";
+import { useI18n } from 'vue-i18n';
+import { useRoute } from 'vue-router';
+import { ref, unref, onMounted, nextTick } from 'vue';
 
 defineOptions({
-  name: "FrameView"
+  name: 'FrameView'
 });
 
 const { t } = useI18n();
 const loading = ref(true);
 const currentRoute = useRoute();
-const frameSrc = ref<string>("");
+const frameSrc = ref<string>('');
 const frameRef = ref<HTMLElement | null>(null);
 
 if (unref(currentRoute.meta)?.frameSrc) {
@@ -28,7 +28,7 @@ function init() {
     if (!iframe) return;
     const _frame = iframe as any;
     if (_frame.attachEvent) {
-      _frame.attachEvent("onload", () => {
+      _frame.attachEvent('onload', () => {
         hideLoading();
       });
     } else {

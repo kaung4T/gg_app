@@ -23,3 +23,26 @@ const changeDate = (t: any) => {
         form.endTime = daysjs(tp[1]).format('YYYY-MM-DD HH:mm:ss');
     }
 }
+
+
+
+==================================================================================================
+
+<ReText
+    size="small"
+    :tippyProps="{content: _}"
+    type="primary" // danger
+>
+    abc
+</ReText>
+
+==================================================================================================
+
+const columns = [
+    {
+        label: '',
+        keys: ['']
+    }
+]
+
+<VerticalTable :columns="columns" :dataList="" :title="" />

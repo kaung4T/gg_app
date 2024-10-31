@@ -12,6 +12,17 @@ module.exports = {
         primary: 'var(--el-color-primary)',
         text_color_primary: 'var(--el-text-color-primary)',
         text_color_regular: 'var(--el-text-color-regular)'
+      },
+      keyframes: {
+        rotate360: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
+        }
+      },
+      animation: {
+        rorate360: {
+          rotate360: 'rotate360 4s linear infinate'
+        }
       }
     }
   }
