@@ -18,11 +18,11 @@ export const cdn = importToCDN({
       var: 'VueI18n',
       path: 'vue-i18n.runtime.global.prod.min.js'
     },
-    {
-      name: 'vue-demi',
-      var: 'VueDemi',
-      path: 'index.iife.min.js'
-    },
+    // {
+    //   name: 'vue-demi',
+    //   var: 'VueDemi',
+    //   path: 'index.iife.min.js'
+    // },
     {
       name: 'pinia',
       var: 'Pinia',
