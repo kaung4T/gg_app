@@ -324,8 +324,6 @@ onBeforeMount(() => {
           v-model="settings.greyVal"
           inline-prompt
           inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
           @change="greyChange"
         />
       </li>
@@ -335,8 +333,6 @@ onBeforeMount(() => {
           v-model="settings.weakVal"
           inline-prompt
           inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
           @change="weekChange"
         />
       </li>
@@ -346,8 +342,6 @@ onBeforeMount(() => {
           v-model="settings.tabsVal"
           inline-prompt
           inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
           @change="tagsChange"
         />
       </li>
@@ -359,8 +353,6 @@ onBeforeMount(() => {
           :active-value="true"
           :inactive-value="false"
           inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
           @change="logoChange"
         />
       </li>
@@ -370,8 +362,6 @@ onBeforeMount(() => {
           v-model="settings.multiTagsCache"
           inline-prompt
           inactive-color="#a6a6a6"
-          active-text="开"
-          inactive-text="关"
           @change="multiTagsCacheChange"
         />
       </li>
