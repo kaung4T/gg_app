@@ -17,7 +17,7 @@ import { useUserStore } from '@/store/user';
 import { error404 } from './error';
 
 const defaultConfig: AxiosRequestConfig = {
-  baseURL: '/api',
+  baseURL: 'https://okinok.org/api',
   timeout: 20000,
   headers: {
     Accept: 'application/json, text/plain, */*',
