@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 
 export const columns: TableColumnList = [
   {
-    label: t('Serial Number'),
+    label: t('Round Number'),
     prop: 'serial_number'
     // headerRenderer: d => handleTableWidth(d, t('Serial Number'), 'auto')
   },

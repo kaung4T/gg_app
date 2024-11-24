@@ -10,42 +10,18 @@
     </div>
     <!-- Meals -->
     <div class="w-full overflow-x-auto" ref="scrollContainer">
-      <transition-group
-        name="fade"
-        tag="div"
-        class="flex flex-wrap space-x-4 p-4 justify-around"
-      >
-        <div
-          v-for="(item, index) in nextDataList"
-          :key="index"
-          :class="['w-48 h-24 my-2', isDark ? 'bg-slate-800' : 'bg-white']"
-        >
-          <div
-            :class="[
-              'flex items-center justify-center w-48 h-24 rounded-md border',
-              currentItem?.id === item?.id
-                ? 'border-blue-700 border-2 shadow-blue-400 shadow-md'
-                : ''
-            ]"
-          >
-            <img
-              v-if="item.meal?.type == 1"
-              class="w-[80px]"
-              src="/blue.png"
-              alt=""
-            />
-            <img
-              v-if="item.meal?.type == 2"
-              class="w-[80px]"
-              src="/red.png"
-              alt=""
-            />
-            <img
-              v-if="item.meal?.type == 3"
-              class="w-[80px]"
-              src="/green.png"
-              alt=""
-            />
+      <transition-group name="fade" tag="div" class="flex flex-wrap space-x-4 p-4 justify-around">
+        <div v-for="(item, index) in nextDataList" :key="index"
+          :class="['w-48 h-24 my-2', isDark ? 'bg-slate-800' : 'bg-white']" @click="() => updateMeal(item)">
+          <div :class="[
+            'flex items-center justify-center w-48 h-24 rounded-md border',
+            currentItem?.id === item?.id
+              ? 'border-blue-700 border-2 shadow-blue-400 shadow-md'
+              : ''
+          ]">
+            <img v-if="item.meal?.type == 1" class="w-[80px]" src="/blue.png" alt="" />
+            <img v-if="item.meal?.type == 2" class="w-[80px]" src="/red.png" alt="" />
+            <img v-if="item.meal?.type == 3" class="w-[80px]" src="/green.png" alt="" />
             <div class="flex flex-col justify-start ml-2 font-bold text-[13px]">
               <span :class="!item.meal ? 'text-center mb-1' : ''">
                 {{ item.serial_number }}
@@ -54,12 +30,7 @@
               <span>{{ item.meal?.meal }}</span>
               <span>{{ item.meal_type }}</span>
               <span>{{ item.order_type }}</span>
-              <el-button
-                v-if="!item.meal"
-                type="primary"
-                size="small"
-                @click="() => addMeal(item)"
-              >
+              <el-button v-if="!item.meal" type="primary" size="small" @click="() => addMeal(item)">
                 {{ t('Add Meal') }}
               </el-button>
             </div>
@@ -68,36 +39,54 @@
       </transition-group>
     </div>
 
-    <!-- History -->
-    <div>
-      <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
-        <template v-slot="{ size, dynamicColumns }">
-          <SearchForm class="mb-5" @onSearch="onSearch" />
-          <pure-table
-            :style="{ height: 'calc(100vh - 600px)' }"
-            align-whole="center"
-            table-layout="auto"
-            :loading="loading"
-            :size="size"
-            adaptive
-            :data="dataList"
-            :columns="dynamicColumns"
-            :pagination="{ ...pagination, pageSizes: [5, 10, 20, 50, 100] }"
-            :paginationSmall="size === 'small' ? true : false"
-            :header-cell-style="tableHeaderStyle"
-            @page-size-change="handleTableWidthChange"
-            @page-current-change="handleCurrentChange"
-          >
-            <template #meal="{ row }">
-              {{ row?.meal?.meal ?? '-' }}
+    <el-tabs v-model="activeName" class="demo-tabs " type="border-card">
+
+      <!-- Meals -->
+      <el-tab-pane label="Meals" name="meals">
+
+        <div>
+          <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
+            <template v-slot="{ size, dynamicColumns }">
+              <pure-table :style="{ height: 'calc(100vh - 600px)' }" align-whole="center" table-layout="auto"
+                :loading="loading" :size="size" adaptive :data="sortedDataList" :columns="dynamicColumns"
+                :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
+                @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
+                <template #meal="{ row }">
+                  {{ row?.meal?.meal ?? '-' }}
+                </template>
+                <template #member="{ row }">
+                  {{ row?.member?.name ?? '-' }}
+                </template>
+              </pure-table>
             </template>
-            <template #member="{ row }">
-              {{ row?.member?.name ?? '-' }}
+          </PureTableBar>
+        </div>
+      </el-tab-pane>
+      <!-- History -->
+      <el-tab-pane label="History" name="history">
+        <div>
+          <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
+            <template v-slot="{ size, dynamicColumns }">
+              <SearchForm class="mb-5" @onSearch="onSearch" />
+              <pure-table :style="{ height: 'calc(100vh - 600px)' }" align-whole="center" table-layout="auto"
+                :loading="loading" :size="size" adaptive :data="dataList" :columns="dynamicColumns"
+                :pagination="{ ...pagination, pageSizes: [5, 10, 20, 50, 100] }"
+                :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
+                @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
+                <template #meal="{ row }">
+                  {{ row?.meal?.meal ?? '-' }}
+                </template>
+                <template #member="{ row }">
+                  {{ row?.member?.name ?? '-' }}
+                </template>
+              </pure-table>
             </template>
-          </pure-table>
-        </template>
-      </PureTableBar>
-    </div>
+          </PureTableBar>
+        </div>
+      </el-tab-pane>
+    </el-tabs>
+
+
   </div>
 </template>
 
@@ -112,6 +101,9 @@ import SearchForm from './component/SearchForm.vue';
 
 const { isDark } = useDark();
 
+const activeName = ref('meals')
+
+
 defineOptions({ name: 'Game1' });
 const { tableHeaderStyle } = usePublicHooks();
 const {
@@ -125,7 +117,8 @@ const {
   nextDataList,
   addMeal,
   mealList,
-  updateMealList
+  updateMealList,
+  updateMeal
 } = Game1Hook();
 
 const currentItem = ref(null);
@@ -149,6 +142,15 @@ watch(
   { deep: true }
 );
 
+const sortedDataList = computed(() => {
+  return [...nextDataList].sort((a, b) => {
+    if (a.meal_id === null && b.meal_id !== null) return -1; // a first
+    if (a.meal_id !== null && b.meal_id === null) return 1;  // b first
+    return 0; // Preserve existing order for other rows
+  });
+});
+
+
 // scroll
 const scrollContainer = ref(null);
 
@@ -161,21 +163,40 @@ const scrollToEnd = () => {
 onMounted(scrollToEnd);
 onUpdated(scrollToEnd);
 
-// timer
-const currentSecond = ref(String(new Date().getSeconds()));
+// // timer
+// const currentSecond = ref(String(new Date().getSeconds()));
 
-const timer = ref<NodeJS.Timeout>();
+// const timer = ref<NodeJS.Timeout>();
+
+// onMounted(() => {
+//   if (timer.value) clearInterval(timer.value);
+//   timer.value = setInterval(() => {
+//     currentSecond.value = String(new Date().getSeconds()).padStart(2, '0');
+//   }, 1000);
+// });
+
+// onBeforeUnmount(() => {
+//   clearInterval(timer.value);
+// });
+
+const currentSecond = ref(60);
+let timer;
+
+const syncTimer = () => {
+  const now = Date.now(); // Current timestamp in milliseconds
+  const elapsedSeconds = Math.floor((now / 1000) % 60); // Seconds elapsed in the current minute
+  currentSecond.value = 60 - elapsedSeconds; // Countdown from 60
+};
 
 onMounted(() => {
-  if (timer.value) clearInterval(timer.value);
-  timer.value = setInterval(() => {
-    currentSecond.value = String(new Date().getSeconds()).padStart(2, '0');
-  }, 1000);
+  syncTimer(); // Initialize the timer
+  timer = setInterval(syncTimer, 1000); // Update every second
 });
 
 onBeforeUnmount(() => {
-  clearInterval(timer.value);
+  clearInterval(timer); // Clean up interval
 });
+
 
 // table
 
@@ -230,6 +251,9 @@ const setIntervalForNextOrderSearch = async () => {
 onBeforeUnmount(() => {
   clearInterval(intervalIdForNextOrder.value);
 });
+
+
+
 </script>
 
 <style scoped lang="scss"></style>

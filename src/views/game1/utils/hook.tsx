@@ -125,6 +125,24 @@ export function Game1Hook() {
     });
   };
 
+  const updateMeal = (row: GAME1API.ORDER) => {
+    addDialog({
+      title: t('Add Manual Meal'),
+      width: '20%',
+      closeOnClickModal: false,
+      hideFooter: true,
+      contentRenderer: ({ options, index }) =>
+        h(AddMealDialog, {
+          row,
+          mealList,
+          onCloseDialog: _ => {
+            onSearchNextData();
+            closeDialog(options, index);
+          }
+        })
+    });
+  };
+
   onMounted(() => {
     onSearch('reload');
     onSearchNextData();
@@ -143,6 +161,7 @@ export function Game1Hook() {
     addMeal,
     mealList,
     onSearchMealList,
-    updateMealList
+    updateMealList,
+    updateMeal
   };
 }
