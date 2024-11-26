@@ -25,3 +25,6 @@ src/test.html
 *.njsproj
 *.sln
 tsconfig.tsbuildinfo
+
+*.dev
+*.prod
