@@ -9,6 +9,11 @@ export const columns: TableColumnList = [
     // headerRenderer: d => handleTableWidth(d, t('Name'), 'auto')
   },
   {
+    label: t('Name'),
+    prop: 'name'
+    // headerRenderer: d => handleTableWidth(d, t('IP'), 'auto')
+  },
+  {
     label: t('IP'),
     prop: 'ip'
     // headerRenderer: d => handleTableWidth(d, t('IP'), 'auto')

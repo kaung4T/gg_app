@@ -7,6 +7,16 @@
       class="search-form bg-bg_color w-[99/100] pl-8 pt-[12px]"
       :rules="createIPRules"
     >
+      <el-form-item :label="`${t('Name')}:`" prop="name">
+        <el-input
+          v-model="ruleForm.name"
+          :placeholder="t('Enter Name')"
+          clearable
+          maxlength="20"
+          v-enter="search"
+          class="!w-[300px]"
+        />
+      </el-form-item>
       <el-form-item :label="`${t('IP')}:`" prop="ip">
         <el-input
           v-model="ruleForm.ip"
@@ -48,7 +58,8 @@ const formRef = ref<FormInstance>();
 const emits = defineEmits(['onSearch', 'addMemberIP']);
 
 const ruleForm = reactive({
-  ip: ''
+  ip: '',
+  name: ''
 });
 
 const onCreate = async (formEl: FormInstance | undefined) => {

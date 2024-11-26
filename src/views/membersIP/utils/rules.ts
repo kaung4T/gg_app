@@ -14,6 +14,18 @@ const createIPRules = reactive(<FormRules>{
       },
       trigger: 'blur'
     }
+  ],
+  name: [
+    {
+      validator: (_, value, callback) => {
+        if (value === '') {
+          callback(new Error(t('Enter name')));
+        } else {
+          callback();
+        }
+      },
+      trigger: 'blur'
+    }
   ]
 });
 
