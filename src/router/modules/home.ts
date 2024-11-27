@@ -25,6 +25,15 @@ export default {
       }
     },
     {
+      path: '/game7',
+      name: t('Game 7'),
+      component: () => import('@/views/game7/index.vue'),
+      meta: {
+        title: t('Game 7'),
+        showLink: VITE_HIDE_HOME === 'true' ? false : true
+      }
+    },
+    {
       path: '/ipCrawlerManager',
       name: t('IP Crawler List'),
       component: () => import('@/views/ipManager/index.vue'),

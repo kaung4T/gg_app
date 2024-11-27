@@ -47,11 +47,12 @@
         <div>
           <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
             <template v-slot="{ size, dynamicColumns }">
-              <pure-table :style="{ height: 'calc(100vh - 600px)' }" align-whole="center" table-layout="auto"
+              <pure-table :style="{ height: '100vh' }" align-whole="center" table-layout="auto"
                 :loading="loading" :size="size" adaptive :data="sortedDataList" :columns="dynamicColumns"
                 :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
                 @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
                 <template #meal="{ row }">
+                  {{row}}
                   {{ row?.meal?.meal ?? '-' }}
                 </template>
                 <template #member="{ row }">

@@ -13,6 +13,17 @@ export const static_routers = [
     pathList: [0, 0]
   },
   {
+    path: '/game7',
+    name: t('Game 7'),
+    meta: {
+      title: t('Game 7'),
+      showLink: true
+    },
+    id: 0,
+    parentId: 0,
+    pathList: [0, 0]
+  },
+  {
     path: '/members',
     meta: {
       title: t('Members'),
