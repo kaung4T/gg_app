@@ -69,7 +69,7 @@
 
 <script setup lang="ts">
 import { t } from '@/plugins/i18n';
-import { player_row, banker_row } from '../utils/types';
+import { player_row, banker_row, tie_row } from '../utils/types';
 import { message } from '@/utils/message';
 import { id } from 'element-plus/es/locale';
 import { ref, onMounted } from "vue";
@@ -147,7 +147,7 @@ function bankerClick (index: number) {
 }
 
 function tieClick (index: number) {
-  newFormInline.p = banker_row[index];
+  newFormInline.p = tie_row[index];
 
   playerList.map((d, i) => { playerSelected.value[i].style.border = "none"; })
   bankerList.map((d, i) => { bankerSelected.value[i].style.border = "none"; })
