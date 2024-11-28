@@ -17,7 +17,7 @@ declare namespace COMMON {
     data: T;
   };
 
-  type ListFetchProps<T> = {
+  type ListFetchProps = {
     pageSize: number;
     pageNum: number;
   };
