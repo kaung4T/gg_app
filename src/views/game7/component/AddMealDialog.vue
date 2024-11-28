@@ -13,7 +13,7 @@
     <div>
 
 
-      <div>
+      <div class="mb-11">
         <h4 class="text-center mb-5">When Player is selected</h4>
         <div class="flex justify-middle">
           <h5 class="w-6/12 text-center">Player</h5>
@@ -27,7 +27,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="mb-11">
         <h4 class="text-center mb-5">When Banker is selected</h4>
         <div class="flex justify-middle">
           <h5 class="w-6/12 text-center">Player</h5>
@@ -41,7 +41,7 @@
         </ul>
       </div>
 
-      <div>
+      <div class="mb-11">
         <h4 class="text-center mb-5">When Tie is selected</h4>
         <div class="flex justify-middle">
           <h5 class="w-6/12 text-center">Player</h5>
@@ -82,7 +82,7 @@ const props = defineProps<{
 }>();
 
 const newFormInline = reactive({
-  p: {}
+  p: null
 });
 
 const playerSelected = ref();
@@ -160,15 +160,17 @@ const closeDialog = () => {
 };
 
 const confirmClick = async () => {
-  // alert(newFormInline.p)
-  const res = await API.updateGameVegasBaccarat({
+  console.log(newFormInline.p)
+  if (newFormInline.p !== null) {
+    const res = await API.updateGameVegasBaccarat({
       id: props.row.id,
       member_id: null,
       banker: newFormInline.p["banker"],
       player: newFormInline.p["player"],
       order_type: "MANUAL"
-  });
-  message(res.message, { type: res.status ? 'success' : 'error' });
-  emits('closeDialog');
+    });
+    message(res.message, { type: res.status ? 'success' : 'error' });
+    emits('closeDialog');
+  }
 };
 </script>
