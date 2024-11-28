@@ -77,7 +77,7 @@ import { func } from 'vue-types';
 
 const emits = defineEmits(['closeDialog']);
 const props = defineProps<{
-  row: VegasBaccaratAPI.ORDER;
+  row: Baccarat7MAPI.ORDER;
   mealList: any;
 }>();
 
@@ -90,42 +90,42 @@ const bankerSelected = ref();
 const tieSelected = ref();
 
 const playerList = [
-  ["k(club) + 9(diamond)", "4(diamond) + 3(club)"],
-  ["A(heart) + 8(diamond)", "J(spade) + 7(club)"],
-  ["Q(diamond) + 8(club)", "3(heart) + J(spade)"],
-  ["3(club) + 6(heart)", "10(diamond) + A(club)"],
-  ["k(club) + 9(spade)", "4(club) + 3(diamond)"],
-  ["7(heart) + 3(spade) + 8(diamond)", "Q(spade) + K(club) + 2(heart)"],
-  ["K(heart) + Q(club) + 7(spade)", "6(diamond) + 4(diamond) + A(spade)"],
-  ["10(heart) + K(diamond) +6(heart)", "4(heart) + 7(heart) + 2(heart)"],
-  ["2(heart) + 3(diamond) +3(heart)", "A(diamond) + 9(diamond) + 6(spade"],
-  ["2(spade) + 9(diamond) +6(heart)", "10(heart) + 3(heart) + 9(spade)"]
+  ["8(heart) + Q(heart)", "5(spade) + 9(heart)"],
+  ["J(spade) + 8(diamond)", "8(spade) + 8(club)"],
+  ["K(diamond) + 9(club)", "5(heart) + 9(spade)"],
+  ["J(diamond) + 8(heart)", "Q(club) + A(spade)"],
+  ["2(club) + 7(spade)", "2(heart) + 9(diamond)"],
+  ["10(heart) + 4(spade) + 4(diamond)", "5(spade) +9(club) + A(heart)"],
+  ["5(club) + 6(spade) + 6(heart)", "10(spade) + 5(diamond) + K(diamond)"],
+  ["4(spade) + 8(diamond) +6(heart)", "9(heart) + 3(heart) + Q(spade)"],
+  ["7(spade) +5(diamond) +4(heart)", "10(club) + A(diamond) + A(heart)"],
+  ["2(diamond) + 9(heart) +6(heart)", "K(diamond) + 4(heart) + 6(spade)"]
 ]
 
 const bankerList = [
-  ["3(diamond) + 2(diamond)", "9(club) + K(club)"],
-  ["4(diamond) + 7(heart)", "J(diamond) + 8(spade)"],
-  ["10(diamond) + 7(spade)", "Q(diamond) + 9(spade)"],
+  ["K(spade) + 3(diamond)", "J(spade) + 8(club)"],
+  ["7(club) + 10(heart)", "6(club) + 3(spade)"],
+  ["4(spade) + 2(diamond)", "Q(club) + 7(spade)"],
   ["6(club) + 2(diamond)", "4(spade) + 5(heart)"],
-  ["8(diamond) + 8(spade)", "7(heart) + A(spade)"],
-  ["10(heart) + A(spade) + 4(diamond)", "Q(spade) + 2(club) + 5(heart)"],	
-  ["J(heart) + K(spade) + 5(spade)", "7(spade) + 8(diamond) + A(heart)"],
-  ["10(heart) + 4(spade) + 6(club)", "5(club) + K(heart) + 3(heart)"],
-  ["3(spade) + 10(diamond) + 7(heart)", "K(spade) + 2(diamond) + 6(spade)"],
-  ["10(heart) + 5(spade) + 2(spade)	", "7(club) + 3(diamond) + 9(spade)"]
+  ["7(diamond) + 4(spade)", "5(heart) + 3(spade)"],
+  ["K(heart) + 2(spade) + 10(diamond)", "10(spade) + 3(club) + J(heart)"],
+  ["7(club) + 4(spade) + 10(spade)", "5(spade) + 10(heart) + K(heart)"],
+  ["K(spade) + A(spade) + A(club)", "6(heart) + 4(club) + 9(spade)"],
+  ["10(spade) + K(spade) + A(diamond)", "A(spade) + 2(diamond) + 3(club)"],
+  ["Q(diamond) + K(spade) + 3(spade)", "7(club) + 4(diamond) + 4(spade)"]
 ]
 
 const tieList = [
-  ["6(club) + 10(club)", "9(diamond) + 7(club)"],
-  ["J(diamond) + 9(spade)", "6(heart) + 3(club)"],
-  ["5(club) + 4(club)", "9(diamond) + K(heart)"],
-  ["Q(heart) + 8(spade)", "3(heart) + 5(club)"],
-  ["3(diamond) + 4(spade)", "A(spade) + 6(spade)"],
-  ["A(club) + Q(heart) + 3(spade)", "K(diamond) + 2(heart) + 2(spade)"],
-  ["7(diamond) + 3(club) + 6(spade)", "A(club) + 2(spade) + 3(heart)"],
-  ["2(heart) + 3(spade) + A(club)", "A(heart) + 9(club) + 6(spade)"],
-  ["10(club) + 4(spade) + J(club)", "5(heart) + 6(spade) + 3(heart)"],
-  ["7(spade) + 7(heart) + 2(heart)", "8(diamond) + 6(heart) + 2(spade)"]
+  ["J(club) + 9(heart)", "2(diamond) + 7(heart)"],
+  ["6(diamond) + 3(spade)", "4(heart) + 5(club)"],
+  ["5(club) + 2(club)", "7(diamond) + K(heart)"],
+  ["Q(heart) + 7(spade)", "3(heart) + 4(club)"],
+  ["4(diamond) + 3(spade)", "5(spade) + 2(spade)"],
+  ["5(spade) +9(club) + A(heart)", "10(spade) + 3(club) + 2(heart)"],
+  ["10(spade) + 5(diamond) + K(diamond)", "4(spade) + 10(heart) + A(heart)"],
+  ["7(heart) + 3(heart) + 8(spade)", "6(heart) + 4(club) + 8(club)"],
+  ["5(club) + 5(diamond) + 4(heart)", "2(spade) + K(diamond) + 2(club)"],
+  ["6(diamond) + 4(heart) + 6(spade)", "4(club) + 10(diamond) + 2(spade)"],
 ]
 
 function playerClick (index: number) {
@@ -161,7 +161,7 @@ const closeDialog = () => {
 
 const confirmClick = async () => {
   if (newFormInline.updaetData !== null) {
-    const res = await API.updateGameVegasBaccarat({
+    const res = await API.updateGameBaccarat7M({
       id: props.row.id,
       member_id: null,
       banker: newFormInline.updaetData["banker"],

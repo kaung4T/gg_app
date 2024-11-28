@@ -24,6 +24,17 @@ export const static_routers = [
     pathList: [0, 0]
   },
   {
+    path: '/7M-BACCARAT',
+    name: t('7M BACCARAT'),
+    meta: {
+      title: t('7M BACCARAT'),
+      showLink: true
+    },
+    id: 0,
+    parentId: 0,
+    pathList: [0, 0]
+  },
+  {
     path: '/members',
     meta: {
       title: t('Members'),

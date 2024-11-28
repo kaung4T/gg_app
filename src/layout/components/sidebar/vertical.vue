@@ -17,6 +17,11 @@
             <router-link to="/Vegas-Baccarat">{{ t('Vegas Baccarat') }}</router-link>
           </span>
         </el-menu-item>
+        <el-menu-item index="/7M-BACCARAT">
+          <span class="text-lg">
+            <router-link to="/7M-BACCARAT">{{ t('7M BACCARAT') }}</router-link>
+          </span>
+        </el-menu-item>
         <el-sub-menu index="1">
           <template #title>
             <el-icon><setting /></el-icon>

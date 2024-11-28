@@ -34,6 +34,15 @@ export default {
       }
     },
     {
+      path: '/7M-BACCARAT',
+      name: t('7M BACCARAT'),
+      component: () => import('@/views/7M-BACCARAT/index.vue'),
+      meta: {
+        title: t('7M BACCARAT'),
+        showLink: VITE_HIDE_HOME === 'true' ? false : true
+      }
+    },
+    {
       path: '/ipCrawlerManager',
       name: t('IP Crawler List'),
       component: () => import('@/views/ipManager/index.vue'),
