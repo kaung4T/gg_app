@@ -4,7 +4,7 @@ import { addDialog, closeDialog } from '@/components/ReDialog';
 import AddMealDialog from '../component/AddMealDialog.vue';
 import EditMealsDialog from '../component/EditMealsDialog.vue';
 
-export function Game7Hook() {
+export function VegasBaccaratHook() {
   const dataList = reactive([]);
   const nextDataList = reactive([]);
   const nextRoundDataList = reactive([]);
@@ -95,19 +95,20 @@ export function Game7Hook() {
       nextRoundDataList.length = 0;
 
       // nextDataList.push(...res.data.data.reverse());
-      nextDataList.push(...res.data.data);
+      nextDataList.push(...res.data.data.reverse());
       nextRoundDataList.push(...res2.data.data.reverse());
     } catch (error) {
       loading.value = false;
     }
   };
 
-  const addGame7 = (row: GAME7API.ORDER) => {
+  const addGameVegasBaccarat = (row: VegasBaccaratAPI.ORDER) => {
     addDialog({
       title: t('Add Manual Meal'),
       width: '50%',
       closeOnClickModal: false,
       hideFooter: true,
+      center: true,
       contentRenderer: ({ options, index }) =>
         h(AddMealDialog, {
           row,
@@ -120,12 +121,13 @@ export function Game7Hook() {
     });
   };
 
-  const updateGame7List = () => {
+  const updateGameVegasBaccaratList = () => {
     addDialog({
       title: t('Update Meal'),
       width: '50%',
       closeOnClickModal: false,
       hideFooter: true,
+      center: true,
       contentRenderer: ({ options, index }) =>
         h(EditMealsDialog, {
           mealList,
@@ -139,12 +141,13 @@ export function Game7Hook() {
     });
   };
 
-  const updateGame7 = (row: GAME7API.ORDER) => {
+  const updateGameVegasBaccarat = (row: VegasBaccaratAPI.ORDER) => {
     addDialog({
       title: t('Add Manual Meal'),
       width: '50%',
       closeOnClickModal: false,
       hideFooter: true,
+      center: true,
       contentRenderer: ({ options, index }) =>
         h(AddMealDialog, {
           row,
@@ -173,10 +176,10 @@ export function Game7Hook() {
     onSearchNextData,
     nextDataList,
     nextRoundDataList,
-    addGame7,
+    addGameVegasBaccarat,
     mealList,
     onSearchMealList,
-    updateGame7List,
-    updateGame7
+    updateGameVegasBaccaratList,
+    updateGameVegasBaccarat
   };
 }

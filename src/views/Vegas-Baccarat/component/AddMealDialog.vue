@@ -5,7 +5,7 @@
     class=""
     label-width=""
   >
-    <el-form-item :label="t('Serial')" prop="serial number">
+    <el-form-item :label="t('Serial')" prop="serial number" style="width: 12%; margin-right: auto; margin-left: auto;">
       <span class="font-bold"> {{ row.round_id }}</span>
     </el-form-item>
 
@@ -77,7 +77,7 @@ import { func } from 'vue-types';
 
 const emits = defineEmits(['closeDialog']);
 const props = defineProps<{
-  row: GAME7API.ORDER;
+  row: VegasBaccaratAPI.ORDER;
   mealList: any;
 }>();
 

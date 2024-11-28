@@ -1,6 +1,6 @@
 import { http } from '@/utils/http';
 
-export const Game7 = {
+export const GameVegasBaccarat = {
     gameVegasBaccaratOrderList: (data: {
       order_type?: string;
       date_from?: string;
@@ -8,7 +8,7 @@ export const Game7 = {
       page: number;
       pageSize: number;
     }) =>
-      http.request<GAME7API.OrderListRes>('post', '/v1/admin/vegasbaccarat/result_list', {
+      http.request<VegasBaccaratAPI.OrderListRes>('post', '/v1/admin/vegasbaccarat/result_list', {
         data
       }),
 

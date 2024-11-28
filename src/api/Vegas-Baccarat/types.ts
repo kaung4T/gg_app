@@ -1,4 +1,4 @@
-declare namespace GAME7API {
+declare namespace VegasBaccaratAPI {
     type ORDER = {
         id: string,
         round_id: string,

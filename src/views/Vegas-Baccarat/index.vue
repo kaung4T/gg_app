@@ -1,8 +1,8 @@
 <template>
     <div class="main">
-      <el-button type="primary" class="float-right" @click="updateGame7List">
+      <!-- <el-button type="primary" class="float-right" @click="updateGameVegasBaccaratList">
         {{ t('Meal') }}
-      </el-button>
+      </el-button> -->
   
       <!-- timer -->
       <div class="my-5">
@@ -14,7 +14,7 @@
           <div v-for="(item, index) in nextRoundDataList" :key="index"
             :class="['w-48 h-24 my-2 rounded-md', isDark ? 'bg-slate-800' : 'bg-white']">
 
-          <div v-if="item.order_type !== 'AUTO'" @click="() => updateGame7(item)">
+          <div v-if="item.order_type !== 'AUTO'" @click="() => updateGameVegasBaccarat(item)">
             <div :class="[
               'flex items-center justify-center w-48 h-24 rounded-md border',
               currentItem?.id === item?.id
@@ -29,7 +29,7 @@
                 <span>{{ item.meal?.meal }}</span>
                 <span>{{ item.meal_type }}</span>
                 <span>{{ item.order_type }}</span>
-                <el-button v-if="!item.meal" type="primary" size="small" @click="() => addGame7(item)">
+                <el-button v-if="!item.meal" type="primary" size="small" @click="() => addGameVegasBaccarat(item)">
                   {{ t('Add Round') }}
                 </el-button>
               </div>
@@ -68,7 +68,7 @@
             <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
               <template v-slot="{ size, dynamicColumns }">
                 <pure-table :style="{ height: '100vh' }" align-whole="center" table-layout="auto"
-                  :loading="loading" :size="size" adaptive :data="sortedDataList" :columns="dynamicColumns"
+                  :loading="loading" :size="size" adaptive :data="sortedDataList.reverse()" :columns="dynamicColumns"
                   :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
                   @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
                   <template #winner="{ row }">
@@ -193,7 +193,7 @@
   <script setup lang="ts">
   import { t } from '@/plugins/i18n';
   import { columns } from './component/TableColumnList';
-  import { Game7Hook } from './utils/hook';
+  import { VegasBaccaratHook } from './utils/hook';
   import { usePublicHooks } from '@/hooks';
   import { PureTableBar } from '@/components/RePureTableBar';
   import { useDark } from '@pureadmin/utils';
@@ -216,11 +216,11 @@
     onSearchNextData,
     nextDataList,
     nextRoundDataList,
-    addGame7,
+    addGameVegasBaccarat,
     mealList,
-    updateGame7List,
-    updateGame7
-  } = Game7Hook();
+    updateGameVegasBaccaratList,
+    updateGameVegasBaccarat
+  } = VegasBaccaratHook();
   
   const currentItem = ref(null);
   watch(
