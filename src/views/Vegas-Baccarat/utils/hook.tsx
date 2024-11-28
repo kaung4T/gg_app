@@ -7,6 +7,7 @@ import EditMealsDialog from '../component/EditMealsDialog.vue';
 export function Game7Hook() {
   const dataList = reactive([]);
   const nextDataList = reactive([]);
+  const nextRoundDataList = reactive([]);
   const mealList = reactive([]);
   const loading = ref(true);
 
@@ -81,14 +82,21 @@ export function Game7Hook() {
         page: 1
       });
 
+      const res2 = await API.addGameVegasBaccarat({
+        pageSize: 8,
+        page: 1
+      });
+
       loading.value = false;
 
       if (!res.status) return message(res.message, { type: 'error' });
 
       nextDataList.length = 0;
+      nextRoundDataList.length = 0;
 
       // nextDataList.push(...res.data.data.reverse());
-      nextDataList.push(...res.data.data.reverse());
+      nextDataList.push(...res.data.data);
+      nextRoundDataList.push(...res2.data.data.reverse());
     } catch (error) {
       loading.value = false;
     }
@@ -164,6 +172,7 @@ export function Game7Hook() {
     loading,
     onSearchNextData,
     nextDataList,
+    nextRoundDataList,
     addGame7,
     mealList,
     onSearchMealList,

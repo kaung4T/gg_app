@@ -11,17 +11,16 @@
       <!-- Meals -->
       <div class="w-full overflow-x-auto" ref="scrollContainer">
         <transition-group name="fade" tag="div" class="flex flex-wrap space-x-4 p-4 justify-around">
-          <div v-for="(item, index) in nextDataList" :key="index"
-            :class="['w-48 h-24 my-2', isDark ? 'bg-slate-800' : 'bg-white']" @click="() => updateGame7(item)">
+          <div v-for="(item, index) in nextRoundDataList" :key="index"
+            :class="['w-48 h-24 my-2 rounded-md', isDark ? 'bg-slate-800' : 'bg-white']">
+
+          <div v-if="item.order_type !== 'AUTO'" @click="() => updateGame7(item)">
             <div :class="[
               'flex items-center justify-center w-48 h-24 rounded-md border',
               currentItem?.id === item?.id
                 ? 'border-blue-700 border-2 shadow-blue-400 shadow-md'
                 : ''
             ]">
-              <img v-if="item.meal?.type == 1" class="w-[80px]" src="/blue.png" alt="" />
-              <img v-if="item.meal?.type == 2" class="w-[80px]" src="/red.png" alt="" />
-              <img v-if="item.meal?.type == 3" class="w-[80px]" src="/green.png" alt="" />
               <div class="flex flex-col justify-start ml-2 font-bold text-[13px]">
                 <span :class="!item.meal ? 'text-center mb-1' : ''">
                   {{ item.round_id }}
@@ -36,6 +35,27 @@
               </div>
             </div>
           </div>
+
+          <div v-if="item.order_type === 'AUTO'">
+            <div :class="[
+              'flex items-center justify-center w-48 h-24 rounded-md border border-slate-400',
+              currentItem?.id === item?.id
+                ? 'border-blue-700 border-2 shadow-blue-400 shadow-md'
+                : ''
+            ]">
+              <div class="flex flex-col justify-start ml-2 font-bold text-[13px] text-slate-400">
+                <span :class="!item.meal ? 'text-center mb-1' : ''">
+                  {{ item.round_id }}
+                </span>
+                <span>{{ item.order_type }}</span>
+                <el-button v-if="!item.meal" type="primary" size="small" disabled>
+                  {{ t('Add Round') }}
+                </el-button>
+              </div>
+            </div>
+          </div>
+
+          </div>
         </transition-group>
       </div>
   
@@ -48,7 +68,7 @@
             <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
               <template v-slot="{ size, dynamicColumns }">
                 <pure-table :style="{ height: '100vh' }" align-whole="center" table-layout="auto"
-                  :loading="loading" :size="size" adaptive :data="sortedDataList.reverse()" :columns="dynamicColumns"
+                  :loading="loading" :size="size" adaptive :data="sortedDataList" :columns="dynamicColumns"
                   :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
                   @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
                   <template #winner="{ row }">
@@ -195,6 +215,7 @@
     loading,
     onSearchNextData,
     nextDataList,
+    nextRoundDataList,
     addGame7,
     mealList,
     updateGame7List,
@@ -204,6 +225,26 @@
   const currentItem = ref(null);
   watch(
     () => nextDataList,
+    newVal => {
+      if (newVal && newVal.length) {
+        const idToFind = newVal
+          .filter(item => !item.is_showed)
+          .map(item => item.id)[0];
+  
+        if (idToFind) {
+          currentItem.value = newVal.find(item => item.id === idToFind);
+        } else {
+          currentItem.value = null; // Handle case when no idToFind is found
+        }
+      } else {
+        currentItem.value = null; // Handle empty or undefined nextDataList
+      }
+    },
+    { deep: true }
+  );
+
+  watch(
+    () => nextRoundDataList,
     newVal => {
       if (newVal && newVal.length) {
         const idToFind = newVal
