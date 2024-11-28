@@ -12,6 +12,11 @@
             <router-link to="/game1">{{ t('Game 1') }}</router-link>
           </span>
         </el-menu-item>
+        <el-menu-item index="/Vegas-Baccarat">
+          <span class="text-lg">
+            <router-link to="/Vegas-Baccarat">{{ t('Vegas Baccarat') }}</router-link>
+          </span>
+        </el-menu-item>
         <el-sub-menu index="1">
           <template #title>
             <el-icon><setting /></el-icon>

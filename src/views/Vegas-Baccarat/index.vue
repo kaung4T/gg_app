@@ -31,7 +31,7 @@
                 <span>{{ item.meal_type }}</span>
                 <span>{{ item.order_type }}</span>
                 <el-button v-if="!item.meal" type="primary" size="small" @click="() => addGame7(item)">
-                  {{ t('Add Meal') }}
+                  {{ t('Add Round') }}
                 </el-button>
               </div>
             </div>
@@ -48,11 +48,26 @@
             <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
               <template v-slot="{ size, dynamicColumns }">
                 <pure-table :style="{ height: '100vh' }" align-whole="center" table-layout="auto"
-                  :loading="loading" :size="size" adaptive :data="sortedDataList" :columns="dynamicColumns"
+                  :loading="loading" :size="size" adaptive :data="sortedDataList.reverse()" :columns="dynamicColumns"
                   :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
                   @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
+                  <template #winner="{ row }">
+                    <div v-if="row.banker && row.player">
+                      <div v-if="row.banker.num > row.player.num">
+                        0
+                      </div>
+                      <div v-if="row.player.num > row.banker.num">
+                        1
+                      </div>
+                      <div v-if="row.banker.num === row.player.num">
+                        2
+                      </div>
+                    </div>
+                    <div v-if="row.banker == null && row.player == null">
+                        -
+                    </div>
+                  </template>
                   <template #total_banker="{ row }">
-                    {{ row }}
                     {{ row?.banker?.num ?? '-' }}
                   </template>
                   <template #banker="{ row }">
@@ -94,19 +109,52 @@
             <PureTableBar :columns="columns" @refresh="onSearch('reload')" title="">
               <template v-slot="{ size, dynamicColumns }">
                 <SearchForm class="mb-5" @onSearch="onSearch" />
-                <pure-table :style="{ height: 'calc(100vh - 600px)' }" align-whole="center" table-layout="auto"
+                <pure-table :style="{ height: '100vh' }" align-whole="center" table-layout="auto"
                   :loading="loading" :size="size" adaptive :data="dataList" :columns="dynamicColumns"
                   :pagination="{ ...pagination, pageSizes: [5, 10, 20, 50, 100] }"
                   :paginationSmall="size === 'small' ? true : false" :header-cell-style="tableHeaderStyle"
                   @page-size-change="handleTableWidthChange" @page-current-change="handleCurrentChange">
+                  <template #winner="{ row }">
+                      <div v-if="row.banker.num > row.player.num">
+                        0
+                      </div>
+                      <div v-if="row.player.num > row.banker.num">
+                        1
+                      </div>
+                      <div v-if="row.banker.num === row.player.num">
+                        2
+                      </div>
+                  </template>
+                  <template #total_banker="{ row }">
+                    {{ row?.banker?.num ?? '-' }}
+                  </template>
                   <template #banker="{ row }">
-                    <!-- {{ row?.meal?.meal ?? '-' }} -->
+                    <div v-if="row.banker">
+                      <div class="inline" v-for="(item, index) in row.banker.poker" :key="index">
+                        <span v-if="index !== 0"> , </span>
+                        {{ item?.str ?? '-' }}
+                      </div>
+                    </div>
+                    <div v-if="row.banker === null">
+                      <span>-</span>
+                    </div>
+                  </template>
+                  <template #total_player="{ row }">
+                    {{ row?.player?.num ?? '-' }}
                   </template>
                   <template #player="{ row }">
-                    <!-- {{ row?.meal?.meal ?? '-' }} -->
+                    <div v-if="row.banker">
+                      <div class="inline" v-for="(item, index) in row.player.poker" :key="index" >
+                        <span v-if="index !== 0"> , </span>
+                        {{ item?.str ?? '-' }}
+                      </div>
+                    </div>
+                    <div v-if="row.player === null">
+                      <span>-</span>
+                    </div>
                   </template>
                   <template #member="{ row }">
-                    <!-- {{ row?.member?.name ?? '-' }} -->
+                    {{ row?.member?.name ?? '-' }}
                   </template>
                 </pure-table>
               </template>
@@ -135,24 +183,6 @@
   const { isDark } = useDark();
   
   const activeName = ref('meals')
-
-  let dataVegasBaccarat:any = null;
-  
-    function createPost() {
-          let vegasBaccarat = async () => {
-            const res = await API.addGameVegasBaccarat(
-              {
-                "page": 1,
-                "pageSize": 10
-              }
-            );
-            console.log(res);
-            dataVegasBaccarat = res;
-          }
-          vegasBaccarat();
-      }
-    createPost()
-  
   
   defineOptions({ name: 'Game1' });
   const { tableHeaderStyle } = usePublicHooks();
@@ -194,8 +224,8 @@
   
   const sortedDataList = computed(() => {
     return [...nextDataList].sort((a, b) => {
-      if (a.member_id === null && b.member_id !== null) return -1; // a first
-      if (a.member_id !== null && b.member_id === null) return 1;  // b first
+      if (a.banker === null && b.banker !== null) return -1; // a first
+      if (a.banker !== null && b.banker === null) return 1;  // b first
       return 0; // Preserve existing order for other rows
     });
   });
@@ -213,13 +243,13 @@
   onMounted(scrollToEnd);
   onUpdated(scrollToEnd);
   
-  const currentSecond = ref(60);
+  const currentSecond = ref(30);
   let timer;
   
   const syncTimer = () => {
     const now = Date.now(); // Current timestamp in milliseconds
-    const elapsedSeconds = Math.floor((now / 1000) % 60); // Seconds elapsed in the current minute
-    currentSecond.value = 60 - elapsedSeconds; // Countdown from 60
+    const elapsedSeconds = Math.floor((now / 1000) % 30); // Seconds elapsed in the current minute
+    currentSecond.value = 30 - elapsedSeconds; // Countdown from 60
   };
   
   onMounted(() => {
@@ -251,7 +281,7 @@
   
       intervalId.value = setInterval(async () => {
         await onSearch();
-      }, 60000);
+      }, 30000);
     }, millisecondsUntilNextMinute);
   };
   
@@ -271,14 +301,13 @@
     const now = new Date();
     const secondsUntilNextMinute = 60 - now.getSeconds();
     const millisecondsUntilNextMinute = secondsUntilNextMinute * 1000;
-  
     if (intervalIdForNextOrder.value) clearInterval(intervalIdForNextOrder.value);
     setTimeout(async () => {
       await onSearchNextData();
   
       intervalIdForNextOrder.value = setInterval(async () => {
         await onSearchNextData();
-      }, 60000);
+      }, 30000);
     }, millisecondsUntilNextMinute);
   };
   

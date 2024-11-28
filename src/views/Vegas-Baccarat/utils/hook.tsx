@@ -32,11 +32,11 @@ export function Game7Hook() {
       if (type === 'reload') pagination.currentPage = 1;
       loading.value = true;
 
-      const res = await API.game1ShowedOrderList({
+      const res = await API.gameVegasBaccaratOrderList({
         order_type: searchForm?.orderType,
         date_from: searchForm?.dateFrom,
         date_to: searchForm?.dateTo,
-        pageSize: pagination.pageSize,
+        pageSize: pagination.pageSize + 5,
         page: pagination.currentPage
       });
 
@@ -46,7 +46,12 @@ export function Game7Hook() {
 
       dataList.length = 0;
 
-      dataList.push(...res.data.data);
+      res.data.data.map((d, i)=>{
+        if (d.banker !== null && d.player !== null) {
+          dataList.push(d);
+        }
+      })
+      // dataList.push(...res.data.data);
       pagination.total = res.data.total;
     } catch (error) {
       loading.value = false;
@@ -72,7 +77,7 @@ export function Game7Hook() {
       loading.value = true;
 
       const res = await API.addGameVegasBaccarat({
-        pageSize: 8,
+        pageSize: 5,
         page: 1
       });
 
@@ -82,6 +87,7 @@ export function Game7Hook() {
 
       nextDataList.length = 0;
 
+      // nextDataList.push(...res.data.data.reverse());
       nextDataList.push(...res.data.data.reverse());
     } catch (error) {
       loading.value = false;

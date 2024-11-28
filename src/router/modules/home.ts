@@ -25,11 +25,11 @@ export default {
       }
     },
     {
-      path: '/game7',
-      name: t('Game 7'),
-      component: () => import('@/views/game7/index.vue'),
+      path: '/Vegas-Baccarat',
+      name: t('Vegas Baccarat'),
+      component: () => import('@/views/Vegas-Baccarat/index.vue'),
       meta: {
-        title: t('Game 7'),
+        title: t('Vegas Baccarat'),
         showLink: VITE_HIDE_HOME === 'true' ? false : true
       }
     },

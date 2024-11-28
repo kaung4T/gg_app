@@ -13,10 +13,10 @@ export const static_routers = [
     pathList: [0, 0]
   },
   {
-    path: '/game7',
-    name: t('Game 7'),
+    path: '/Vegas-Baccarat',
+    name: t('Vegas Baccarat'),
     meta: {
-      title: t('Game 7'),
+      title: t('Vegas Baccarat'),
       showLink: true
     },
     id: 0,

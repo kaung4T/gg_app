@@ -82,7 +82,7 @@ const props = defineProps<{
 }>();
 
 const newFormInline = reactive({
-  p: null
+  updaetData: null
 });
 
 const playerSelected = ref();
@@ -129,7 +129,7 @@ const tieList = [
 ]
 
 function playerClick (index: number) {
-  newFormInline.p = player_row[index];
+  newFormInline.updaetData = player_row[index];
 
   playerList.map((d, i) => { playerSelected.value[i].style.border = "none"; })
   bankerList.map((d, i) => { bankerSelected.value[i].style.border = "none"; })
@@ -138,7 +138,7 @@ function playerClick (index: number) {
 }
 
 function bankerClick (index: number) {
-  newFormInline.p = banker_row[index];
+  newFormInline.updaetData = banker_row[index];
 
   playerList.map((d, i) => { playerSelected.value[i].style.border = "none"; })
   bankerList.map((d, i) => { bankerSelected.value[i].style.border = "none"; })
@@ -147,7 +147,7 @@ function bankerClick (index: number) {
 }
 
 function tieClick (index: number) {
-  newFormInline.p = tie_row[index];
+  newFormInline.updaetData = tie_row[index];
 
   playerList.map((d, i) => { playerSelected.value[i].style.border = "none"; })
   bankerList.map((d, i) => { bankerSelected.value[i].style.border = "none"; })
@@ -160,13 +160,13 @@ const closeDialog = () => {
 };
 
 const confirmClick = async () => {
-  console.log(newFormInline.p)
-  if (newFormInline.p !== null) {
+  console.log(newFormInline.updaetData)
+  if (newFormInline.updaetData !== null) {
     const res = await API.updateGameVegasBaccarat({
       id: props.row.id,
       member_id: null,
-      banker: newFormInline.p["banker"],
-      player: newFormInline.p["player"],
+      banker: newFormInline.updaetData["banker"],
+      player: newFormInline.updaetData["player"],
       order_type: "MANUAL"
     });
     message(res.message, { type: res.status ? 'success' : 'error' });

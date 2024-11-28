@@ -7,6 +7,10 @@ export const columns: TableColumnList = [
     prop: 'round_id'
   },
   {
+    label: t('Winner'),
+    slot: 'winner'
+  },
+  {
     label: t('Total Banker'),
     slot: 'total_banker'
   },
